@@ -77,7 +77,9 @@ class Form extends Component {
                 type="password"
                 placeholder="Confirm password"
               />
-              <button onClick={this.handleFormSubmit}>Submit</button>
+              <button onClick={this.handleFormSubmit}>Sign up!</button>
+              <p>or</p>
+              <a href="#">Sign in</a>
             </form>
           </div>
         );
