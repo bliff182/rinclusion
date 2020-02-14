@@ -1,23 +1,21 @@
+require("dotenv").config();
 const axios = require("axios");
-const db = require("../models");
+// const db = require("../models");
 
-const apiKey = process.env.YELP_API_KEY;
-const BASEURL = "https://api.yelp.com/v3/businesses/search";
+const BASEURL =
+	"https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065";
+const config = {
+	headers: {
+		Authorization: `Bearer ${process.env.YELP_API_KEY}`
+	}
+};
 
 module.exports = {
-	yelpResults: (req, params) => {
+	yelpResults: params => {
 		axios
-			.get(
-				BASEURL,
-				{
-					headers: {
-						Authorization: `Bearer ${apiKey}`
-					}
-				},
-				params
-			)
+			.get(BASEURL, config, params)
 			.then(res => {
-				console.log(res);
+				console.log(res.data.businesses);
 			})
 			.catch(err => {
 				console.log(err);
