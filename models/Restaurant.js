@@ -19,7 +19,12 @@ const restaurantSchema = new Schema({
 		type: Array
 	},
 	location: {
-		type: Object
+		type: Object,
+		required: true
+	},
+	price: {
+		type: String,
+		required: true
 	},
 	isLiked: {
 		type: Boolean,
@@ -28,6 +33,11 @@ const restaurantSchema = new Schema({
 	date: {
 		type: Date,
 		default: Date.now
+	},
+	yelpId: {
+		type: String,
+		required: true,
+		unique: true
 	}
 });
 
