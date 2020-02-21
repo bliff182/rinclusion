@@ -66,7 +66,9 @@ function Form(props) {
             label="Confirm password"
           />
         </Container>
-        <Button variant="contained" style={{ backgroundColor: "red" }} onClick={handleFormSubmit}>Sign up</Button>
+        <Button variant="contained" style={{ backgroundColor: "red" }} onClick={handleFormSubmit}>Sign up!</Button>
+        <p style={{textAlign:"center"}, {fontSize:"12px"}}>or</p>
+        <a style={{textAlign:"center"}, {fontSize:"12px"}} href="#">Log in</a>
 
       </form>
     </div>

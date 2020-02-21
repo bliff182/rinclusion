@@ -9,6 +9,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import MenuItems from '../DrawerRight';
+
 
 
 
@@ -77,8 +79,7 @@ const useStyles = makeStyles(theme => ({
                   open={open}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                 <MenuItems></MenuItems>
                 </Menu>
               </div>
             )}
