@@ -1,14 +1,13 @@
 import React from "react";
-import FormC from "./components/Form";
-import ThumbDownIcon from "./components/DislikeButton";
-import ThumbUpIcon from "./components/LikeButton";
-import GetTitle from "./components/Nav";
+// import FormC from "./components/Form";
+import NavBar from "./components/Nav";
+import MediaCard from "./components/Restaurant";
 
 
 function App() {
   return <div>
-    <GetTitle></GetTitle>
-  <FormC/>
+    <NavBar></NavBar>
+    <MediaCard></MediaCard>
   </div>;
 
 }
