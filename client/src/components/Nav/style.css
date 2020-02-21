@@ -1,0 +1,9 @@
+body {
+    /* font-family: 'Galada', cursive; */
+    font-family: 'Montserrat Subrayada', sans-serif;
+    /* font-family: 'Pacifico', cursive; */
+}
+
+.header {
+    background-color: red;
+}
