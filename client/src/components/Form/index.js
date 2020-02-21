@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+
+
 // import "./style.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: 200,
     },
-  },
+  }
 }));
 
 function Form(props) {
@@ -18,45 +20,54 @@ function Form(props) {
   const classes = useStyles();
   const { userName, email, password, handleInputChange, confirmPass, handleFormSubmit } = props
   return (
-    <div>
-      <form className={classes.root} autoComplete="off">
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          value={userName}
-          name="userName"
-          onChange={handleInputChange}
-          type="text"
-          label="Username"
-        />
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          value={email}
-          name="email"
-          onChange={handleInputChange}
-          type="email"
-          label="Email"
-        />
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          value={password}
-          name="password"
-          onChange={handleInputChange}
-          type="password"
-          label="Password"
-        />
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          value={confirmPass}
-          name="confirmPass"
-          onChange={handleInputChange}
-          type="password"
-          label="Confirm password"
-        />
-        <Button variant="contained" color="primary" onClick={handleFormSubmit}>Submit</Button>
+    <div style={{ textAlign: "center" }}>
+      <form className={classes.root} autoComplete="off" style={{ textAlign: "center" }, { padding: "50px" }, { maxWidth: "100%" }, { marginTop: "30px" }}>
+        <Container>
+          <TextField style={{ marginBottom: "20px" }}
+            id="outlined-basic"
+            variant="outlined"
+            value={userName}
+            name="userName"
+            onChange={handleInputChange}
+            type="text"
+            label="Username"
+          />
+        </Container>
+        <Container>
+          <TextField style={{ marginBottom: "20px" }}
+            id="outlined-basic"
+            variant="outlined"
+            value={email}
+            name="email"
+            onChange={handleInputChange}
+            type="email"
+            label="Email"
+          />
+        </Container>
+        <Container>
+          <TextField style={{ marginBottom: "20px" }}
+            id="outlined-basic"
+            variant="outlined"
+            value={password}
+            name="password"
+            onChange={handleInputChange}
+            type="password"
+            label="Password"
+          />
+        </Container>
+        <Container>
+          <TextField style={{ marginBottom: "20px" }}
+            id="outlined-basic"
+            variant="outlined"
+            value={confirmPass}
+            name="confirmPass"
+            onChange={handleInputChange}
+            type="password"
+            label="Confirm password"
+          />
+        </Container>
+        <Button variant="contained" style={{ backgroundColor: "red" }} onClick={handleFormSubmit}>Sign up</Button>
+
       </form>
     </div>
   )
