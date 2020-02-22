@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-import Container from '@material-ui/core/Container';
 
 // import "./styles.css";
 
@@ -30,7 +29,6 @@ function MediaCard() {
 	return (
         
 		<Card style={{textAlign:"center"}, {width:"500px"}, {minWidth:"300px"}, {margin:"20px auto"}} className={classes.root} mx="auto">
-            <Container style={{textAlign:"center"}}>
 			<CardActionArea>
 				<CardMedia
 					className={classes.media}
@@ -58,7 +56,6 @@ function MediaCard() {
 					<CheckRoundedIcon />
 				</Fab>
 			</CardActions>
-            </Container>
 		</Card>
         
 	);
