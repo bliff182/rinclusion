@@ -93,7 +93,7 @@ function Form(props) {
           Sign up!
         </Button>
         <p style={({ textAlign: "center" }, { fontSize: "12px" })}>or</p>
-        <a style={({ textAlign: "center" }, { fontSize: "12px" })} href="#">
+        <a style={({ textAlign: "center" }, { fontSize: "12px" })} href="/Login">
           Log in
         </a>
       </form>
