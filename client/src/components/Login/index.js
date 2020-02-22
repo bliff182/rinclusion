@@ -46,7 +46,7 @@ function Form(props) {
         </Container>
         <Button variant="contained" style={{ backgroundColor: "red" }} onClick={handleFormSubmit}>Log in</Button>
         <p style={{textAlign:"center", fontSize:"12px", marginTop:"20px"}}>Don't have an account?</p>
-        <a style={{textAlign:"center", fontSize:"12px"}} href="#">Sign up!</a>
+        <a style={{textAlign:"center", fontSize:"12px"}} href="/Signup">Sign up!</a>
 
       </form>
     </div>
