@@ -74,7 +74,7 @@ class FormLogin extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (!this.state.userName || !this.state.email || !this.state.password) {
+    if (!this.state.email || !this.state.password) {
       alert("Please fill out every field");
     } 
 
