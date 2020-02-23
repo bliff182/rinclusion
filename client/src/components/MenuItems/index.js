@@ -8,6 +8,7 @@ function MenuItems() {
             <MenuItem><a href="/discover">Home</a></MenuItem>
             <MenuItem><a href="/Account">Account</a></MenuItem>
             <MenuItem><a href="/Settings">Settings</a></MenuItem>
+            <MenuItem><a href="/Preferences">Preferences</a></MenuItem>
             <MenuItem><a href="/Login">Log out</a></MenuItem>
         </div>
     );

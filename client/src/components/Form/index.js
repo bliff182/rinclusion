@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 function Form(props) {
   const classes = useStyles();
   const {
-    userName,
+    name,
     email,
     password,
     handleInputChange,
@@ -42,11 +42,11 @@ function Form(props) {
             style={{ marginBottom: "20px" }}
             id="outlined-basic"
             variant="outlined"
-            value={userName}
-            name="userName"
+            value={name}
+            name="name"
             onChange={handleInputChange}
             type="text"
-            label="Username"
+            label="Name"
           />
         </Container>
         <Container>
@@ -104,7 +104,7 @@ function Form(props) {
 class FormC extends Component {
   state = {
     email: "",
-    userName: "",
+    name: "",
     password: "",
     confirmPass: ""
   };
@@ -124,7 +124,7 @@ class FormC extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (!this.state.userName || !this.state.email || !this.state.password) {
+    if (!this.state.name || !this.state.email || !this.state.password) {
       alert("Please fill out every field");
     } else if (this.state.password.length < 6) {
       alert(`Please choose a more secure password`);
@@ -149,7 +149,7 @@ class FormC extends Component {
           console.log(errorCode);
           console.log(errorMessage);
           this.setState({
-            userName: "",
+            name: "",
             email: "",
             password: "",
             confirmPass: ""
@@ -157,7 +157,7 @@ class FormC extends Component {
         });
 
       // this.setState({
-      //   userName: "",
+      //   name: "",
       //   email: "",
       //   password: "",
       //   confirmPass: ""
@@ -169,7 +169,7 @@ class FormC extends Component {
     return (
       <Form
         email={this.state.email}
-        userName={this.state.userName}
+        name={this.state.name}
         password={this.state.password}
         confirmPass={this.state.confirmPass}
         handleInputChange={this.handleInputChange}

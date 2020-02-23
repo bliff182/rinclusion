@@ -1,8 +1,56 @@
-import React from "react";
-import MediaCard from "../components/Restaurant"
+import React, { Component } from "react";
+import API from "../utils/API";
+import Card from "../components/Card";
+import Alert from "../components/Alert";
 
-function Discover() {
-    return <MediaCard></MediaCard>
+class Discover extends Component {
+  state = {
+    image: "",
+    match: false,
+    matchCount: 0
+  };
+
+  // When the component mounts, load the next dog to be displayed
+  componentDidMount() {
+    this.loadNextRestaurant();
+  }
+
+  handleBtnClick = event => {
+    // Get the data-value of the clicked button
+    const btnType = event.target.attributes.getNamedItem("data-value").value;
+    // Clone this.state to the newState object
+    // We'll modify this object and use it to set our component's state
+    const newState = { ...this.state };
+
+    if (btnType === "pick") {
+      // Set newState.match to either true or false depending on whether or not the user likes the place
+        
+    } else {
+      // If we thumbs down'ed the dog, we haven't matched with it
+      newState.match = false;
+    }
+    // Replace our component's state with newState, load the next dog image
+    this.setState(newState);
+    this.loadNextRestaurant();
+  };
+
+  loadNextRestaurant = () => {
+    API.getRestaurants()
+      .then(res =>
+        this.setState({
+          image: res.data.message
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <div>
+        <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+      </div>
+    );
+  }
 }
 
 export default Discover;

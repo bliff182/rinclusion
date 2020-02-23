@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(1),
     textAlign: 'center',
-    // backgroundColor: 
     color: theme.palette.text.secondary,
   },
 }));
@@ -38,45 +37,40 @@ export default function NestedGrid() {
     return (
       <React.Fragment>
         <Grid item xs={4}>
-            <Button>
-          <Paper className={classes.paper}><img src={mexico} alt="mexican jpeg" style={{height:"160px", width:"240px"}}></img><p>Mexican</p></Paper>
-          </Button>
+          <Paper className={classes.paper}><img src={mexico} alt="mexican jpeg" style={{minHeight:"100px", maxHeight:"160px", minWidth:"200px", maxWidth:"240"}}></img><p>Mexican</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-            <Button>
-          <Paper className={classes.paper}><img src={burger} alt="burger jpeg" style={{height:"160px", width:"240px"}}></img><p>Burgers</p></Paper>
-          <Checkbox />
-          </Button>
+          <Paper className={classes.paper}><img src={burger} alt="burger jpeg" style={{height:"160px", width:"240px"}}></img><p>Burgers</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={indian} alt="indian jpeg" style={{height:"160px", width:"240px"}}></img><p>Indian</p></Paper>
+          <Paper className={classes.paper}><img src={indian} alt="indian jpeg" style={{height:"160px", width:"240px"}}></img><p>Indian</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={pizza} alt="pizza jpeg" style={{height:"160px", width:"240px"}}></img><p>Pizza</p></Paper>
+          <Paper className={classes.paper}><img src={pizza} alt="pizza jpeg" style={{height:"160px", width:"240px"}}></img><p>Pizza</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={italian} alt="italian jpeg" style={{height:"160px", width:"240px"}}></img><p>Italian</p></Paper>
+          <Paper className={classes.paper}><img src={italian} alt="italian jpeg" style={{height:"160px", width:"240px"}}></img><p>Italian</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={latin} alt="latin jpeg" style={{height:"160px", width:"240px"}}></img><p>Latin American</p></Paper>
+          <Paper className={classes.paper}><img src={latin} alt="latin jpeg" style={{height:"160px", width:"240px"}}></img><p>Latin American</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={chinese} alt="chinese jpeg" style={{height:"160px", width:"240px"}}></img><p>Chinese</p></Paper>
+          <Paper className={classes.paper}><img src={chinese} alt="chinese jpeg" style={{height:"160px", width:"240px"}}></img><p>Chinese</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={comfort} alt="comfort jpeg" style={{height:"160px", width:"240px"}}></img><p>Comfort Food</p></Paper>
+          <Paper className={classes.paper}><img src={comfort} alt="comfort jpeg" style={{height:"160px", width:"240px"}}></img><p>Comfort Food</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={breakfast} alt="breakfast jpeg" style={{height:"160px", width:"240px"}}></img><p>Breakfast</p></Paper>
+          <Paper className={classes.paper}><img src={breakfast} alt="breakfast jpeg" style={{height:"160px", width:"240px"}}></img><p>Breakfast</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={seafood} alt="seafood jpeg" style={{height:"160px", width:"240px"}}></img><p>Seafood</p></Paper>
+          <Paper className={classes.paper}><img src={seafood} alt="seafood jpeg" style={{height:"160px", width:"240px"}}></img><p>Seafood</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={vegan} alt="vegan jpeg" style={{height:"160px", width:"240px"}}></img><p>Vegan</p></Paper>
+          <Paper className={classes.paper}><img src={vegan} alt="vegan jpeg" style={{height:"160px", width:"240px"}}></img><p>Vegan</p><Checkbox /></Paper>
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={all} alt="all foods jpeg" style={{height:"160px", width:"240px"}}></img><p>Anything goes</p></Paper>
+          <Paper className={classes.paper}><img src={all} alt="all foods jpeg" style={{height:"160px", width:"240px"}}></img><p>Anything goes</p><Checkbox /></Paper>
         </Grid>
       </React.Fragment>
     );
