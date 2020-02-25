@@ -59,13 +59,13 @@ import Alert from "../components/Alert";
 
 class Discover extends Component {
   state = {
-    // name: "",
-    // image_url: "",
-    // url: "",
-    // price: "",
-    // location: {},
-    // categories: [],
-    restuarants: [],
+    name: "",
+    image_url: "",
+    url: "",
+    price: "",
+    location: {},
+    categories: [],
+    // restuarants: [],
     index: 0
   };
 
@@ -78,25 +78,23 @@ class Discover extends Component {
   loadNextRestaurant = () => {
     API.getRestaurants()
       .then(res => {
-        // const {
-        //   name,
-        //   image_url,
-        //   url,
-        //   price,
-        //   location,
-        //   categories
-        // } = res.data.businesses[this.state.index];
-        // this.setState({
-        //   name: name,
-        //   image_url: image_url,
-        //   url: url,
-        //   price: price,
-        //   location: location,
-        //   categories: categories
-        // });
+        const { name, image_url, url, price, location, categories } = res.data[
+          this.state.index
+        ];
+        // console.log(res);
         this.setState({
-          restaurants: res.data.businesses
+          name: name,
+          image_url: image_url,
+          url: url,
+          price: price,
+          location: location,
+          categories: categories
         });
+        console.log(this.state);
+        // this.setState({
+        //   restaurants: res.data
+        // });
+        // console.log(res.data);
       })
       .catch(err => console.log(err));
   };

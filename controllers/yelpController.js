@@ -5,7 +5,7 @@ const db = require("../models");
 console.log(process.env.YELP_API_KEY);
 
 const BASEURL =
-  "https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065";
+  "https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065&limit=50";
 const config = {
   headers: {
     Authorization: `Bearer ${process.env.YELP_API_KEY}`
