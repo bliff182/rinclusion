@@ -41,7 +41,7 @@ function MediaCard(props) {
         <CardMedia
           className={classes.media}
           // image="https://s3-media0.fl.yelpcdn.com/bphoto/-8q8k2VzHo_KzBCzNCBcAg/o.jpg"
-          image={props.image_url}
+          image={props.image}
           // title="Restaurant Sample"
           title={props.name}
         />
