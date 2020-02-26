@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/Nav";
 import Discover from "./pages/Discover";
@@ -6,32 +6,70 @@ import LogIn from "./pages/Login";
 import Settings from "./pages/Settings";
 import Signup from "./pages/Signup";
 import Viewed from "./pages/Viewed";
-import Container from '@material-ui/core/Container';
-import Account from './pages/Account';
-import Preferences from './pages/Preferences';
-import SwipeableTemporaryDrawer from "./components/Drawer"
+import Container from "@material-ui/core/Container";
+import Account from "./pages/Account";
+import Preferences from "./pages/Preferences";
+import SwipeableTemporaryDrawer from "./components/Drawer";
+import * as firebase from "firebase";
 
+class App extends Component {
+  state = {
+    authenticated: false,
+    loading: true
+  };
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <NavBar />
-        <Container>
-          <Route exact path="/" component={LogIn} />
-          <Route exact path="/Login" component={LogIn} />
-          <Route exact path="/Discover" component={Discover} />
-          <Route exact path="/Account" component={Account} />
-          <Route exact path="/Settings" component={Settings} />
-          <Route exact path="/Viewed" component={Viewed} />
-          <Route exact path="/Signup" component={Signup} />
-          <Route exact path="/Preferences" component={Preferences} />
+  componentWillMount() {
+    this.removeAuthListener = firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          loading: false
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+          loading: false
+        });
+      }
+    });
+  }
 
-          {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
-        </Container>
-      </div>
-  </Router>
-  )
+  render() {
+    // Do something different if loading... add spinner?
+    if (this.state.loading) {
+      return (
+        <div
+          style={{
+            textAlign: "center",
+            position: "absolute",
+            top: "25%",
+            left: "50%"
+          }}
+        >
+          <h3>Loading...</h3>
+        </div>
+      );
+    }
+    return (
+      <Router>
+        <div>
+          <NavBar />
+          <Container>
+            <Route exact path="/" component={LogIn} />
+            <Route exact path="/Login" component={LogIn} />
+            <Route exact path="/Discover" component={Discover} />
+            <Route exact path="/Account" component={Account} />
+            <Route exact path="/Settings" component={Settings} />
+            <Route exact path="/Viewed" component={Viewed} />
+            <Route exact path="/Signup" component={Signup} />
+            <Route exact path="/Preferences" component={Preferences} />
+
+            {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
+          </Container>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
