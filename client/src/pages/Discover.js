@@ -4,59 +4,6 @@ import Card from "../components/Card";
 import MediaCard from "../components/Restaurant";
 import Alert from "../components/Alert";
 
-// class Discover extends Component {
-//   state = {
-//     image: "",
-//     match: false,
-//     matchCount: 0
-//   };
-
-//   // When the component mounts, load the next dog to be displayed
-//   componentDidMount() {
-//     this.loadNextRestaurant();
-//   }
-
-//   handleBtnClick = event => {
-//     // Get the data-value of the clicked button
-//     const btnType = event.target.attributes.getNamedItem("data-value").value;
-//     // Clone this.state to the newState object
-//     // We'll modify this object and use it to set our component's state
-//     const newState = { ...this.state };
-
-//     if (btnType === "pick") {
-//       // Set newState.match to either true or false depending on whether or not the user likes the place
-//     } else {
-//       // If we thumbs down'ed the dog, we haven't matched with it
-//       newState.match = false;
-//     }
-//     // Replace our component's state with newState, load the next dog image
-//     this.setState(newState);
-//     this.loadNextRestaurant();
-//   };
-
-//   loadNextRestaurant = () => {
-//     API.getRestaurants()
-//       .then(res =>
-//         this.setState({
-//           image: res.data.image_url
-//         })
-//       )
-//       .catch(err => console.log(err));
-//     console.log(this.state.image);
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         {/* <Card image={this.state.image} handleBtnClick={this.handleBtnClick} /> */}
-//         <MediaCard />
-//       </div>
-//     );
-//   }
-// }
-
-// export default Discover;
-
 class Discover extends Component {
   state = {
     name: "",
@@ -65,7 +12,7 @@ class Discover extends Component {
     price: "",
     location: {},
     categories: [],
-    // restuarants: [],
+    restuarants: [],
     index: 0
   };
 
@@ -88,7 +35,8 @@ class Discover extends Component {
           url: url,
           price: price,
           location: location,
-          categories: categories
+          categories: categories,
+          restaurants: res.data
         });
         console.log(this.state);
         // this.setState({
@@ -106,6 +54,23 @@ class Discover extends Component {
     });
     console.log(this.state);
     this.loadNextRestaurant();
+  };
+
+  handleRestaurantLike = id => {
+    const restaurant = this.state.restaurant.find(
+      restaurant => restaurant.id === id
+    );
+
+    API.likeRestaurant({
+      yelpId: restaurant.id,
+      name: restaurant.name,
+      image_irl: restaurant.image_url,
+      url: restaurant.url,
+      categories: restaurant.categories,
+      location: restaurant.location,
+      price: restaurant.price,
+      isLiked: true
+    }).then(() => this.getRestaurants());
   };
 
   render() {
