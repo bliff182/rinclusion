@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Card from "../components/Card";
-import MediaCard from "../components/Restaurant";
+import RestaurantCard from "../components/Restaurant";
 import Alert from "../components/Alert";
 
 class Discover extends Component {
   state = {
+    yelpId: "",
     name: "",
     image_url: "",
     url: "",
@@ -13,38 +14,13 @@ class Discover extends Component {
     location: {},
     categories: [],
     restuarants: [],
+    current: {},
     index: 0
   };
 
   // When the component mounts, load the next restaurant to be displayed
   componentDidMount() {
     this.loadNextRestaurant();
-    console.log(this.state);
-  }
-
-  loadNextRestaurant() {
-    API.getRestaurants()
-      .then(res => {
-        const { name, image_url, url, price, location, categories } = res.data[
-          this.state.index
-        ];
-        // console.log(res);
-        this.setState({
-          name: name,
-          image_url: image_url,
-          url: url,
-          price: price,
-          location: location,
-          categories: categories,
-          restaurants: res.data
-        });
-        console.log(this.state);
-        // this.setState({
-        //   restaurants: res.data
-        // });
-        // console.log(res.data);
-      })
-      .catch(err => console.log(err));
   }
 
   handleBtnClick = event => {
@@ -52,38 +28,86 @@ class Discover extends Component {
     this.setState({
       index: this.state.index + 1
     });
-    console.log(this.state);
     this.loadNextRestaurant();
   };
 
-  handleRestaurantLike = id => {
-    const restaurant = this.state.restaurant.find(
-      restaurant => restaurant.id === id
-    );
+  loadNextRestaurant() {
+    API.getRestaurants()
+      .then(res => {
+        const {
+          id,
+          name,
+          image_url,
+          url,
+          price,
+          location,
+          categories
+        } = res.data[this.state.index];
+        this.setState({
+          yelpId: id,
+          name: name,
+          image_url: image_url,
+          url: url,
+          price: price,
+          location: location,
+          categories: categories,
+          restaurants: res.data,
+          current: res.data[this.state.index]
+        });
+        // console.log(this.state);
+      })
+      .catch(err => console.log(err));
+  }
 
-    API.likeRestaurant({
-      yelpId: restaurant.id,
-      name: restaurant.name,
-      image_irl: restaurant.image_url,
-      url: restaurant.url,
-      categories: restaurant.categories,
-      location: restaurant.location,
-      price: restaurant.price,
+  handleLike = () => {
+    API.likeOrDislike({
+      yelpId: this.state.yelpId,
+      name: this.state.name,
+      image_url: this.state.image_url,
+      url: this.state.url,
+      categories: this.state.categories,
+      location: this.state.location,
+      price: this.state.price,
       isLiked: true
-    }).then(() => this.getRestaurants());
+    }).then(() => {
+      this.setState({
+        index: this.state.index + 1
+      });
+      this.loadNextRestaurant();
+    });
+  };
+
+  handleDislike = () => {
+    API.likeOrDislike({
+      yelpId: this.state.yelpId,
+      name: this.state.name,
+      image_url: this.state.image_url,
+      url: this.state.url,
+      categories: this.state.categories,
+      location: this.state.location,
+      price: this.state.price,
+      isLiked: false
+    }).then(() => {
+      this.setState({
+        index: this.state.index + 1
+      });
+      this.loadNextRestaurant();
+    });
   };
 
   render() {
     return (
       <div>
-        <MediaCard
+        <RestaurantCard
+          id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}
           url={this.state.url}
           price={this.state.price}
           location={this.state.location}
           categories={this.state.categories}
-          onClick={this.handleBtnClick}
+          onClickOne={this.handleLike}
+          onClickTwo={this.handleDislike}
         />
       </div>
     );

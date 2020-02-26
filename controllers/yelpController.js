@@ -12,14 +12,22 @@ const config = {
   }
 };
 
+// Defining methods for the yelpController
+
+// findAll searches the Yelp API and returns only the entries we haven't already saved
+
+// It also makes sure that the results returned from the API all contain a name, image, url, category list, price indicator, and location information
+
+// holy shit it worked
+
 module.exports = {
-  findAll: (req, res) => {
+  findAll: function(req, res) {
     const { query: params } = req;
     axios
-      .get(BASEURL, config) // remember to add params
-      .then(results => {
-        const newResults = results.data.businesses.filter(result => {
-          return (
+      .get(BASEURL, config)
+      .then(results =>
+        results.data.businesses.filter(
+          result =>
             result.name &&
             result.image_url &&
             result.url &&
@@ -31,72 +39,47 @@ module.exports = {
             result.location.city &&
             result.location.state &&
             result.location.zip_code
-          );
-        });
-        res.json(newResults);
-        // console.log(newResults);
-        // console.log(newResults.length);
-      })
+        )
+      )
+      .then(apiRestaurants =>
+        db.Restaurant.find().then(dbRestaurants =>
+          apiRestaurants.filter(apiRestaurant =>
+            dbRestaurants.every(
+              dbRestaurant =>
+                dbRestaurant.yelpId.toString() !== apiRestaurant.id
+            )
+          )
+        )
+      )
+      .then(restaurants => res.json(restaurants))
       .catch(err => res.status(422).json(err));
   }
 };
 
 // module.exports = {
-// 	findAll: (req, res) => {
-// 		const { query: params } = req;
-// 		axios
-// 			.get(
-// 				"https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50",
-// 				params,
-// 				config
-// 			)
-// 			.then(response => {
-// 				// console.log(results.data.businesses);
-// 				const results = response.data.businesses;
-// 				res.json(results);
-// 			})
-// 			.catch(err => {
-// 				console.log(err);
-// 			});
-// 	}
-// };
-
-// module.exports = {
-// 	findAll: (req, res) => {
-// 		const { query: params } = req;
-// 		axios
-// 			.get(
-// 				BASEURL,
-// 				// { params },
-// 				config
-// 			)
-// 			.then(
-// 				results => res.json(results.data.businesses)
-// 				// results.data.businesses.filter(
-// 				// 	result =>
-// 				// 		result.name &&
-// 				// 		result.image_url &&
-// 				// 		result.url &&
-// 				// 		result.categories &&
-// 				// 		result.rating &&
-// 				// 		result.location.address1 &&
-// 				// 		result.location.city &&
-// 				// 		result.location.state &&
-// 				// 		result.location.zip_code &&
-// 				// 		result.price
-// 				// )
-// 			)
-// 			.then(apiRestaurants =>
-// 				db.Restaurant.find().then(dbRestaurants =>
-// 					apiRestaurants.filter(apiRestaurant =>
-// 						dbRestaurants.every(
-// 							dbRestaurant =>
-// 								dbRestaurant.yelpId.toString() !== apiRestaurant.id
-// 						)
-// 					)
-// 				)
-// 			)
-// 			.then(restaurants => res.json(restaurants))
-// 			.catch(err => res.status(422).json(err));
-// 	}
+//   findAll: (req, res) => {
+//     const { query: params } = req;
+//     axios
+//       .get(BASEURL, config) // remember to add params
+//       .then(results => {
+//         const newResults = results.data.businesses.filter(result => {
+//           // STOPPPPPPPPPPPPPPPPPPPPPPPPP
+//           return (
+//             result.name &&
+//             result.image_url &&
+//             result.url &&
+//             result.categories &&
+//             result.rating &&
+//             result.price &&
+//             result.location &&
+//             result.location.address1 &&
+//             result.location.city &&
+//             result.location.state &&
+//             result.location.zip_code
+//           );
+//         });
+//         res.json(newResults);
+//       })
+//       .catch(err => res.status(422).json(err));
+//   }
 // };
