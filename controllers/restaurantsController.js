@@ -13,19 +13,6 @@ module.exports = {
       .then(dbRestaurant => res.json(dbRestaurant))
       .catch(err => res.status(422).json(err));
   },
-  findLiked: function(req, res) {
-    db.Restaurant.find({})
-      .where("isLiked", true)
-      .sort({ date: -1 })
-      .then(dbRestaurant => res.json(dbRestaurant))
-      .catch(err => res.status(422).json(err));
-  },
-  findDisliked: function(req, res) {
-    db.Restaurant.find({ isLiked: false })
-      .sort({ date: -1 })
-      .then(dbRestaurant => res.json(dbRestaurant))
-      .catch(err => res.status(422).json(err));
-  },
   create: function(req, res) {
     db.Restaurant.create(req.body)
       .then(dbRestaurant => res.json(dbRestaurant))

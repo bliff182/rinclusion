@@ -1,102 +1,26 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Card from "../components/Card";
-import MediaCard from "../components/Restaurant";
+import RestaurantCard from "../components/Restaurant";
 import Alert from "../components/Alert";
-
-// class Discover extends Component {
-//   state = {
-//     image: "",
-//     match: false,
-//     matchCount: 0
-//   };
-
-//   // When the component mounts, load the next dog to be displayed
-//   componentDidMount() {
-//     this.loadNextRestaurant();
-//   }
-
-//   handleBtnClick = event => {
-//     // Get the data-value of the clicked button
-//     const btnType = event.target.attributes.getNamedItem("data-value").value;
-//     // Clone this.state to the newState object
-//     // We'll modify this object and use it to set our component's state
-//     const newState = { ...this.state };
-
-//     if (btnType === "pick") {
-//       // Set newState.match to either true or false depending on whether or not the user likes the place
-//     } else {
-//       // If we thumbs down'ed the dog, we haven't matched with it
-//       newState.match = false;
-//     }
-//     // Replace our component's state with newState, load the next dog image
-//     this.setState(newState);
-//     this.loadNextRestaurant();
-//   };
-
-//   loadNextRestaurant = () => {
-//     API.getRestaurants()
-//       .then(res =>
-//         this.setState({
-//           image: res.data.image_url
-//         })
-//       )
-//       .catch(err => console.log(err));
-//     console.log(this.state.image);
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         {/* <Card image={this.state.image} handleBtnClick={this.handleBtnClick} /> */}
-//         <MediaCard />
-//       </div>
-//     );
-//   }
-// }
-
-// export default Discover;
 
 class Discover extends Component {
   state = {
+    yelpId: "",
     name: "",
     image_url: "",
     url: "",
     price: "",
     location: {},
     categories: [],
-    // restuarants: [],
+    restuarants: [],
+    current: {},
     index: 0
   };
 
   // When the component mounts, load the next restaurant to be displayed
   componentDidMount() {
     this.loadNextRestaurant();
-    console.log(this.state);
-  }
-
-  loadNextRestaurant() {
-    API.getRestaurants()
-      .then(res => {
-        const { name, image_url, url, price, location, categories } = res.data[
-          this.state.index
-        ];
-        // console.log(res);
-        this.setState({
-          name: name,
-          image_url: image_url,
-          url: url,
-          price: price,
-          location: location,
-          categories: categories
-        });
-        console.log(this.state);
-        // this.setState({
-        //   restaurants: res.data
-        // });
-        // console.log(res.data);
-      })
-      .catch(err => console.log(err));
   }
 
   handleBtnClick = event => {
@@ -104,21 +28,98 @@ class Discover extends Component {
     this.setState({
       index: this.state.index + 1
     });
-    console.log(this.state);
     this.loadNextRestaurant();
+  };
+
+  loadNextRestaurant() {
+    API.getRestaurants()
+      .then(res => {
+        const {
+          id,
+          name,
+          image_url,
+          url,
+          price,
+          location,
+          categories
+        } = res.data[this.state.index];
+        this.setState({
+          yelpId: id,
+          name: name,
+          image_url: image_url,
+          url: url,
+          price: price,
+          location: location,
+          categories: categories,
+          restaurants: res.data,
+          current: res.data[this.state.index]
+        });
+        console.log(this.state);
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleLike = () => {
+    // console.log(this.state);
+    API.likeRestaurant({
+      yelpId: this.state.yelpId,
+      name: this.state.name,
+      image_url: this.state.image_url,
+      url: this.state.url,
+      categories: this.state.categories,
+      location: this.state.location,
+      price: this.state.price,
+      isLiked: true
+    }).then(() => {
+      this.setState({
+        index: this.state.index + 1
+      });
+      this.loadNextRestaurant();
+    });
+  };
+
+  handleDislike = () => {
+    API.likeRestaurant({
+      yelpId: this.state.yelpId,
+      name: this.state.name,
+      image_url: this.state.image_url,
+      url: this.state.url,
+      categories: this.state.categories,
+      location: this.state.location,
+      price: this.state.price,
+      isLiked: false
+    }).then(() => {
+      this.setState({
+        index: this.state.index + 1
+      });
+      this.loadNextRestaurant();
+    });
   };
 
   render() {
     return (
       <div>
-        <MediaCard
+        {/* {this.state.current.map(restaurant => (
+          <RestaurantCard
+            key={restaurant.id}
+            name={restaurant.name}
+            image_url={restaurant.image_url}
+            url={restaurant.url}
+            categories={restaurant.categories}
+            location={restaurant.location}
+            price={restaurant.price}
+          />
+        ))} */}
+        <RestaurantCard
+          id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}
           url={this.state.url}
           price={this.state.price}
           location={this.state.location}
           categories={this.state.categories}
-          onClick={this.handleBtnClick}
+          onClickOne={this.handleLike}
+          onClickTwo={this.handleDislike}
         />
       </div>
     );

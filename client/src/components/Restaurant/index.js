@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   }
 });
 
-function MediaCard(props) {
+function RestaurantCard(props) {
   const classes = useStyles();
 
   return (
@@ -47,7 +47,6 @@ function MediaCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {/* Uva */}
             {props.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -57,13 +56,14 @@ function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions style={{ justifyContent: "space-between" }}>
-        <Fab color="secondary" aria-label="dislike" onClick={props.onClick}>
+        <Fab color="secondary" aria-label="dislike" onClick={props.onClickTwo}>
           <CloseRoundedIcon />
         </Fab>
         <Fab
           style={{ color: "white", backgroundColor: "green" }}
           aria-label="like"
-          onClick={props.onClick}
+          id={props.id}
+          onClick={props.onClickOne}
         >
           <CheckRoundedIcon />
         </Fab>
@@ -72,4 +72,4 @@ function MediaCard(props) {
   );
 }
 
-export default MediaCard;
+export default RestaurantCard;
