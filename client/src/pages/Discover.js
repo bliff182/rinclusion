@@ -75,7 +75,7 @@ class Discover extends Component {
     console.log(this.state);
   }
 
-  loadNextRestaurant = () => {
+  loadNextRestaurant() {
     API.getRestaurants()
       .then(res => {
         const { name, image_url, url, price, location, categories } = res.data[
@@ -97,6 +97,15 @@ class Discover extends Component {
         // console.log(res.data);
       })
       .catch(err => console.log(err));
+  }
+
+  handleBtnClick = event => {
+    // event.preventDefault();
+    this.setState({
+      index: this.state.index + 1
+    });
+    console.log(this.state);
+    this.loadNextRestaurant();
   };
 
   render() {
@@ -109,6 +118,7 @@ class Discover extends Component {
           price={this.state.price}
           location={this.state.location}
           categories={this.state.categories}
+          onClick={this.handleBtnClick}
         />
       </div>
     );

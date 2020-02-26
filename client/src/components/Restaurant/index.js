@@ -57,12 +57,13 @@ function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions style={{ justifyContent: "space-between" }}>
-        <Fab color="secondary" aria-label="dislike">
+        <Fab color="secondary" aria-label="dislike" onClick={props.onClick}>
           <CloseRoundedIcon />
         </Fab>
         <Fab
           style={{ color: "white", backgroundColor: "green" }}
           aria-label="like"
+          onClick={props.onClick}
         >
           <CheckRoundedIcon />
         </Fab>
