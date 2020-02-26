@@ -40,19 +40,31 @@ function MediaCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          // image="https://s3-media0.fl.yelpcdn.com/bphoto/-8q8k2VzHo_KzBCzNCBcAg/o.jpg"
           image={props.image}
-          // title="Restaurant Sample"
           title={props.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {/* Uva */}
-            {props.name}
-          </Typography>
+          {/* <Link to={props.url}> */}
+          <a href={props.url} target="_blank" rel="noopener noreferrer">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              style={{ color: "black" }}
+            >
+              {props.name}
+            </Typography>
+          </a>
+          {/* </Link> */}
           <Typography variant="body2" color="textSecondary" component="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <h6>{props.location.address1}</h6>
+            <h6>
+              {props.location.city}, {props.location.state}{" "}
+              {props.location.zip_code}
+            </h6>
+            <p>Price: {props.price}</p>
+            {/* Figure out how to get categories on page */}
+            {/* <p>Type: {props.categories[0].title}</p> */}
           </Typography>
         </CardContent>
       </CardActionArea>
