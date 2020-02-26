@@ -54,14 +54,13 @@ class Discover extends Component {
           restaurants: res.data,
           current: res.data[this.state.index]
         });
-        console.log(this.state);
+        // console.log(this.state);
       })
       .catch(err => console.log(err));
   }
 
   handleLike = () => {
-    // console.log(this.state);
-    API.likeRestaurant({
+    API.likeOrDislike({
       yelpId: this.state.yelpId,
       name: this.state.name,
       image_url: this.state.image_url,
@@ -79,7 +78,7 @@ class Discover extends Component {
   };
 
   handleDislike = () => {
-    API.likeRestaurant({
+    API.likeOrDislike({
       yelpId: this.state.yelpId,
       name: this.state.name,
       image_url: this.state.image_url,
@@ -99,17 +98,6 @@ class Discover extends Component {
   render() {
     return (
       <div>
-        {/* {this.state.current.map(restaurant => (
-          <RestaurantCard
-            key={restaurant.id}
-            name={restaurant.name}
-            image_url={restaurant.image_url}
-            url={restaurant.url}
-            categories={restaurant.categories}
-            location={restaurant.location}
-            price={restaurant.price}
-          />
-        ))} */}
         <RestaurantCard
           id={this.state.id}
           name={this.state.name}
