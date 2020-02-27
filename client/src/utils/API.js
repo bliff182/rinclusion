@@ -10,6 +10,10 @@ export default {
   getLikes: function() {
     return axios.get("/api/restaurants", { params: { isLiked: true } });
   },
+  // Gets all disliked restaurants
+  getDislikes: function() {
+    return axios.get("/api/restaurants", { params: { isLiked: false } });
+  },
   // Deletes the liked restaurant
   deleteLike: function(id) {
     return axios.delete("/api/restaurants" + id);
