@@ -37,17 +37,18 @@ function RestaurantCard(props) {
       className={classes.root}
       mx="auto"
     >
-      <CardActionArea>
-        <CardMedia
+      <CardActionArea 
+      href={props.url} target="_blank"
+      rel="noopener noreferrer">
+        
+      <CardMedia
           className={classes.media}
           image={props.image}
           title={props.name}
+          style={{ height:"400px"}}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.name}
-          </Typography>
-          <a href={props.url} target="_blank" rel="noopener noreferrer">
+        
             <Typography
               gutterBottom
               variant="h5"
@@ -56,8 +57,7 @@ function RestaurantCard(props) {
             >
               {props.name}
             </Typography>
-          </a>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" >
             <h6>{props.location.address1}</h6>
             <h6>
               {props.location.city}, {props.location.state}{" "}
@@ -70,7 +70,7 @@ function RestaurantCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions style={{ justifyContent: "space-between" }}>
-        <Fab color="secondary" aria-label="dislike" onClick={props.onClickTwo}>
+        <Fab style={{ backgroundColor:"red"}} aria-label="dislike" onClick={props.onClickTwo}>
           <CloseRoundedIcon />
         </Fab>
         <Fab

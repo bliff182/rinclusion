@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Card from "../components/Card";
+// import Card from "../components/Card";
 import RestaurantCard from "../components/Restaurant";
-import Alert from "../components/Alert";
+import NavBar from "../components/Nav";
+
+// import Alert from "../components/Alert";
 
 class Discover extends Component {
   state = {
@@ -98,7 +100,9 @@ class Discover extends Component {
   render() {
     return (
       <div>
+        <NavBar></NavBar>
         <RestaurantCard
+          style={{marginTop:"80px"}}
           id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}
