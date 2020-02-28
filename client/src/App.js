@@ -5,7 +5,7 @@ import Discover from "./pages/Discover";
 import LogIn from "./pages/Login";
 import Settings from "./pages/Settings";
 import Signup from "./pages/Signup";
-import Viewed from "./pages/Viewed";
+import Viewed from "./pages/Liked";
 import Container from "@material-ui/core/Container";
 import Account from "./pages/Account";
 import Preferences from "./pages/Preferences";
@@ -87,6 +87,7 @@ class App extends Component {
           )} */}
           <Container>
             {/* <Route exact path="/" component={LogIn} />
+
             <Route exact path="/Login" component={LogIn} />
             <Route exact path="/Discover" component={Discover} />
             <Route exact path="/Account" component={Account} />

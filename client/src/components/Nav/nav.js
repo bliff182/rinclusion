@@ -5,10 +5,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItems from '../MenuItems';
+import Leftbar from "../Leftbar";
 
 
 
@@ -44,10 +44,12 @@ const useStyles = makeStyles(theme => ({
   
     return (
       <div className={classes.root}>
-        <AppBar position="static" style={{backgroundColor:"red"}}>
+        <AppBar position="fixed" style={{backgroundColor:"red"}}>
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
+              
+                <Leftbar />
+              
             </IconButton>
             <Typography variant="h3" style={{textAlign:"center"}} className={classes.title}>
               MealMatch

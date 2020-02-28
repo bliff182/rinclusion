@@ -156,12 +156,12 @@ class FormC extends Component {
           });
         });
 
-      // this.setState({
-      //   name: "",
-      //   email: "",
-      //   password: "",
-      //   confirmPass: ""
-      // });
+      this.setState({
+        name: "",
+        email: "",
+        password: "",
+        confirmPass: ""
+      });
     }
   };
 

@@ -27,8 +27,7 @@ const restaurantSchema = new Schema({
     required: true
   },
   isLiked: {
-    type: Boolean,
-    default: false
+    type: Boolean
   },
   yelpId: {
     type: String,

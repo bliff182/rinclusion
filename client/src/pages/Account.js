@@ -1,11 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
+import API from "../utils/API";
+import Alert from "../components/Alert";
+import PrevLiked from "../components/Liked";
+import SwipeableTemporaryDrawer from "../components/Leftbar";
+import Container from "@material-ui/core/Container";
 
-function Account() {
-  return (
-    <div>
-      <h1>Account Page</h1>
-    </div>
-  );
+class LikedRestaurants extends Component {
+  state = {
+    restaurants: []
+  };
+
+  componentDidMount() {
+    this.grabLikes();
+  }
+
+  grabLikes() {
+    API.getLikes()
+      .then(res => {
+        this.setState({
+          restaurants: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div>
+        <Container style={{ minHeight: "80%" }}>
+          <Alert
+            type="danger"
+            style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}
+          >
+            {this.state.error}
+          </Alert>
+          <SwipeableTemporaryDrawer grabLikes={this.grabLikes} />
+          <PrevLiked restaurants={this.state.restaurants} />
+        </Container>
+      </div>
+    );
+  }
 }
 
-export default Account;
+export default LikedRestaurants;
