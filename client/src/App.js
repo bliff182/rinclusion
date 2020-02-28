@@ -30,7 +30,7 @@ class App extends Component {
     fire.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
-          user,
+          user: { user },
           authenticated: true,
           loading: false
         });
