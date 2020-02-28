@@ -50,7 +50,7 @@ function SwipeableTemporaryDrawer() {
 
     return (
         <div>
-            <MenuIcon onClick={toggleDrawer("left", true)}></MenuIcon>
+            <MenuIcon onClick={toggleDrawer("left", true)} href="/Liked"></MenuIcon>
             <SwipeableDrawer
                 open={state.left}
                 onClose={toggleDrawer("left", false)}
