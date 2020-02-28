@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Viewed from "./pages/Liked";
 import Container from "@material-ui/core/Container";
 import Account from "./pages/Account";
+import Liked from "./pages/Liked";
 import Preferences from "./pages/Preferences";
 import SwipeableTemporaryDrawer from "./components/Drawer";
 import fire from "./config/Fire";
@@ -90,6 +91,7 @@ class App extends Component {
 
             <Route exact path="/Login" component={LogIn} />
             <Route exact path="/Discover" component={Discover} />
+            <Route exact path="/Liked" component={Liked} />
             <Route exact path="/Account" component={Account} />
             <Route exact path="/Settings" component={Settings} />
             <Route exact path="/Viewed" component={Viewed} />
