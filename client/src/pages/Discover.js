@@ -15,7 +15,7 @@ class Discover extends Component {
     price: "",
     location: {},
     categories: [],
-    restuarants: [],
+    restaurants: [],
     current: {},
     index: 0
   };
@@ -102,7 +102,7 @@ class Discover extends Component {
       <div>
         <NavBar></NavBar>
         <RestaurantCard
-          style={{marginTop:"80px"}}
+          style={{ marginTop: "80px" }}
           id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}
