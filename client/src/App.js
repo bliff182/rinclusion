@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import NavBar from "./components/Nav";
 import Discover from "./pages/Discover";
 import LogIn from "./pages/Login";
@@ -8,16 +13,16 @@ import Signup from "./pages/Signup";
 import Viewed from "./pages/Liked";
 import Container from "@material-ui/core/Container";
 import Account from "./pages/Account";
-import Liked from "./pages/Liked";
+// import Liked from "./pages/Liked";
 import Preferences from "./pages/Preferences";
-import SwipeableTemporaryDrawer from "./components/Drawer";
+// import SwipeableTemporaryDrawer from "./components/Drawer";
 import fire from "./config/Fire";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 
 class App extends Component {
   state = {
-    user: {},
+    // user: {},
     authenticated: false,
     loading: true
   };
@@ -25,19 +30,22 @@ class App extends Component {
   componentWillMount() {
     this.authListener();
     // console.log(this.state.user);
+    console.table(this.state);
   }
 
   authListener = () => {
     fire.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
-          user: { user },
+          // user: { user },
           authenticated: true,
           loading: false
         });
+        console.log("authed");
+        console.table(this.state);
       } else {
         this.setState({
-          user: null,
+          // user: null,
           authenticated: false,
           loading: false
         });
@@ -86,8 +94,9 @@ class App extends Component {
               <Route exact path="/login" component={LogIn} />
             </Container>
           )} */}
-          <Container>
-            {/* <Route exact path="/" component={LogIn} />
+          <Container style={{ marginTop: "100px" }}>
+            <Switch>
+              {/* <Route exact path="/" component={LogIn} />
 
             <Route exact path="/Login" component={LogIn} />
             <Route exact path="/Discover" component={Discover} />
@@ -98,64 +107,65 @@ class App extends Component {
             <Route exact path="/Signup" component={Signup} />
             <Route exact path="/Preferences" component={Preferences} /> */}
 
-            <Route exact path="/">
-              {this.state.authenticated === true ? (
-                <Redirect to="/discover" />
-              ) : (
-                <Signup />
-              )}
-            </Route>
-            <Route exact path="/signup">
-              {this.state.authenticated === true ? (
-                <Redirect to="/discover" />
-              ) : (
-                <Signup />
-              )}
-            </Route>
-            <Route exact path="/login">
-              {this.state.authenticated === true ? (
-                <Redirect to="/discover" />
-              ) : (
-                <LogIn />
-              )}
-            </Route>
-            <Route exact path="/account">
-              {this.state.authenticated === false ? (
-                <Redirect to="/signup" />
-              ) : (
-                <Account />
-              )}
-            </Route>
-            <Route exact path="/settings">
-              {this.state.authenticated === false ? (
-                <Redirect to="/signup" />
-              ) : (
-                <Settings />
-              )}
-            </Route>
-            <Route exact path="/viewed">
-              {this.state.authenticated === false ? (
-                <Redirect to="/signup" />
-              ) : (
-                <Viewed />
-              )}
-            </Route>
-            <Route exact path="/preferences">
-              {this.state.authenticated === false ? (
-                <Redirect to="/signup" />
-              ) : (
-                <Preferences />
-              )}
-            </Route>
-            <Route exact path="/discover">
-              {this.state.authenticated === false ? (
-                <Redirect to="/signup" />
-              ) : (
-                <Discover />
-              )}
-            </Route>
+              <Route exact path="/">
+                {this.state.authenticated === true ? (
+                  <Redirect to="/discover" />
+                ) : (
+                  <Signup />
+                )}
+              </Route>
+              <Route exact path="/signup">
+                {this.state.authenticated === true ? (
+                  <Redirect to="/discover" />
+                ) : (
+                  <Signup />
+                )}
+              </Route>
+              <Route exact path="/login">
+                {this.state.authenticated === true ? (
+                  <Redirect to="/discover" />
+                ) : (
+                  <LogIn />
+                )}
+              </Route>
+              <Route exact path="/account">
+                {this.state.authenticated === false ? (
+                  <Redirect to="/signup" />
+                ) : (
+                  <Account />
+                )}
+              </Route>
+              <Route exact path="/settings">
+                {this.state.authenticated === false ? (
+                  <Redirect to="/signup" />
+                ) : (
+                  <Settings />
+                )}
+              </Route>
+              <Route exact path="/viewed">
+                {this.state.authenticated === false ? (
+                  <Redirect to="/signup" />
+                ) : (
+                  <Viewed />
+                )}
+              </Route>
+              <Route exact path="/preferences">
+                {this.state.authenticated === false ? (
+                  <Redirect to="/signup" />
+                ) : (
+                  <Preferences />
+                )}
+              </Route>
+              <Route exact path="/discover">
+                {this.state.authenticated === false ? (
+                  <Redirect to="/signup" />
+                ) : (
+                  <Discover />
+                )}
+              </Route>
 
-            {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
+              {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
+            </Switch>
           </Container>
         </div>
       </Router>
