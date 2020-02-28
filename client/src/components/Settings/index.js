@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import * as firebase from "firebase";
+import fire from "../../config/Fire";
 import SettingsForm from "../SettingsForm";
-
 
 class Settings extends Component {
   state = {
@@ -42,7 +41,7 @@ class Settings extends Component {
     } else if (this.state.password !== this.state.confirmPass) {
       alert("Passwords do not match");
     } else {
-      firebase
+      fire
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .catch(error => {

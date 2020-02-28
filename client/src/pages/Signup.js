@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FormC from "../components/Form";
-// import Logo from "../components/Logo";
 import fire from "../config/Fire";
+// import Logo from "../components/Logo";
 
 class Signup extends Component {
   state = {
@@ -12,14 +12,10 @@ class Signup extends Component {
   };
 
   handleInputChange = event => {
-    // let value = event.target.value;
-    // const name = event.target.name;
     const { name, value } = event.target;
-
     // if (name === "password") {
     //   value = value.substring(0, 30);
     // }
-
     this.setState({
       [name]: value
     });

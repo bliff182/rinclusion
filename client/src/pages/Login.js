@@ -32,17 +32,8 @@ class LogIn extends Component {
           const errorMessage = error.errorMessage;
           console.log(errorCode);
           console.log(errorMessage);
-          // this.setState({
-          //   email: "",
-          //   password: ""
-          // });
         });
     }
-
-    // this.setState({
-    //   email: "",
-    //   password: ""
-    // });
   };
 
   render() {
