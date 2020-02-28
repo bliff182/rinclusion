@@ -48,7 +48,7 @@ function RestaurantCard(props) {
           style={{ height:"400px"}}
         />
         <CardContent>
-        
+          <a href={props.url} target="_blank" rel="noopener noreferrer">
             <Typography
               gutterBottom
               variant="h5"

@@ -14,10 +14,4 @@ router
   .put(restaurantsController.update)
   .delete(restaurantsController.remove);
 
-// Matches with "/api/restaurants/liked"
-// router.route("/liked").get(restaurantsController.findLiked);
-
-// Matches with "/api/restaurants/disliked"
-// router.route("/disliked").get(restaurantsController.findDisliked);
-
 module.exports = router;
