@@ -44,9 +44,6 @@ function RestaurantCard(props) {
           title={props.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.name}
-          </Typography>
           <a href={props.url} target="_blank" rel="noopener noreferrer">
             <Typography
               gutterBottom
