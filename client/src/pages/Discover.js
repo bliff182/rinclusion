@@ -42,8 +42,8 @@ class Discover extends Component {
           image_url,
           url,
           price,
-          location,
-          categories
+          location
+          // categories
         } = res.data[this.state.index];
         this.setState({
           yelpId: id,
@@ -52,11 +52,17 @@ class Discover extends Component {
           url: url,
           price: price,
           location: location,
-          categories: categories,
+          // categories: categories,
           restaurants: res.data,
           current: res.data[this.state.index]
         });
-        // console.log(this.state);
+        // console.log(this.state.current.categories);
+        const currentCategories = this.state.current.categories.map(result => {
+          return result.title;
+        });
+        const formattedCategories = currentCategories.join(", ");
+        this.setState({ categories: formattedCategories });
+        // console.log(formattedCategories);
       })
       .catch(err => console.log(err));
   }

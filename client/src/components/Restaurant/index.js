@@ -37,11 +37,7 @@ function RestaurantCard(props) {
       className={classes.root}
       mx="auto"
     >
-      <CardActionArea
-        href={props.url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={props.image}
@@ -67,7 +63,7 @@ function RestaurantCard(props) {
             </h6>
             <p>Price: {props.price}</p>
             {/* Figure out how to get categories on page */}
-            {/* <p>Type: {props.categories[0].title}</p> */}
+            <p>Type: {props.categories}</p>
           </Typography>
         </CardContent>
       </CardActionArea>
