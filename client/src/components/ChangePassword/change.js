@@ -14,11 +14,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SettingsForm(props) {
+function ChangePass(props) {
   const classes = useStyles();
   const {
-    name,
-    email,
     password,
     handleInputChange,
     confirmPass,
@@ -36,36 +34,21 @@ function SettingsForm(props) {
           { marginTop: "30px" })
         }
       >
-        <Container>
-          <p>Change Display Name:</p>
-          <TextField
-            style={{ marginBottom: "20px" }}
-            id="outlined-basic"
-            variant="outlined"
-            value={name}
-            name="name"
-            onChange={handleInputChange}
-            type="text"
-            label="Name"
-          />
-        </Container>
         
-        <Container><h4>Change Email:</h4>
+        
+        <Container
+            style={{
+                marginTop:"50px",
+                marginBottom:'50px'
+            }}
+        >
+        <h5
+            style={{
+                float:"left"
+            }}
+        >Change Password:</h5>
           <TextField
-            style={{ marginBottom: "20px" }}
-            id="outlined-basic"
-            variant="outlined"
-            value={email}
-            name="email"
-            onChange={handleInputChange}
-            type="email"
-            label="Email"
-          />
-        </Container>
-        <Container>
-
-          <TextField
-            style={{ marginBottom: "20px" }}
+            style={{ marginBottom: "20px", marginRight:"30px" }}
             id="outlined-basic"
             variant="outlined"
             value={password}
@@ -74,10 +57,10 @@ function SettingsForm(props) {
             type="password"
             label="Password"
           />
-        </Container>
-        <Container>
+        
+       
           <TextField
-            style={{ marginBottom: "20px" }}
+            style={{ marginBottom: "20px", marginRight:"30px" }}
             id="outlined-basic"
             variant="outlined"
             value={confirmPass}
@@ -86,21 +69,18 @@ function SettingsForm(props) {
             type="password"
             label="Confirm password"
           />
-        </Container>
+        
         <Button
           variant="contained"
-          style={{ backgroundColor: "red" }}
+          style={{ backgroundColor: "red", float:"right" }}
           onClick={handleFormSubmit}
         >
-          hello1
+          Change Password
         </Button>
-        <p style={({ textAlign: "center" }, { fontSize: "12px" })}>Already have an account?</p>
-        <a style={({ textAlign: "center" }, { fontSize: "12px" })} href="/Login">
-          hello
-        </a>
+        </Container>
       </form>
     </div>
   );
 }
 
-export default SettingsForm;
+export default ChangePass;
