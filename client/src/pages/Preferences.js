@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 function Cuizines() {
     return <div>
         <Logo></Logo>
-            <NestedGrid></NestedGrid>
+        <NestedGrid></NestedGrid>
         </div>
 }
 

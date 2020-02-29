@@ -72,61 +72,58 @@ function Form(props) {
   );
 }
 
-class FormLogin extends Component {
-  state = {
-    email: "",
-    password: ""
-  };
+export default Form;
 
-  handleInputChange = event => {
-    let value = event.target.value;
-    const name = event.target.name;
+// class FormLogin extends Component {
+//   state = {
+//     email: "",
+//     password: ""
+//   };
 
-    if (name === "password") {
-      value = value.substring(0, 30);
-    }
+//   handleInputChange = event => {
+//     let value = event.target.value;
+//     const name = event.target.name;
 
-    this.setState({
-      [name]: value
-    });
-  };
+//     if (name === "password") {
+//       value = value.substring(0, 30);
+//     }
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (!this.state.email || !this.state.password) {
-      alert("Please fill out every field");
-    } else {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .catch(error => {
-          const errorCode = error.errorCode;
-          const errorMessage = error.errorMessage;
-          console.log(errorCode);
-          console.log(errorMessage);
-          this.setState({
-            email: "",
-            password: ""
-          });
-        });
-    }
+//     this.setState({
+//       [name]: value
+//     });
+//   };
 
-    // this.setState({
-    //   email: "",
-    //   password: ""
-    // });
-  };
+//   handleFormSubmit = event => {
+//     event.preventDefault();
+//     if (!this.state.email || !this.state.password) {
+//       alert("Please fill out every field");
+//     } else {
+//       firebase
+//         .auth()
+//         .signInWithEmailAndPassword(this.state.email, this.state.password)
+//         .catch(error => {
+//           const errorCode = error.errorCode;
+//           const errorMessage = error.errorMessage;
+//           console.log(errorCode);
+//           console.log(errorMessage);
+//           this.setState({
+//             email: "",
+//             password: ""
+//           });
+//         });
+//     }
+//   };
 
-  render() {
-    return (
-      <Form
-        email={this.state.email}
-        password={this.state.password}
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-      />
-    );
-  }
-}
+//   render() {
+//     return (
+//       <Form
+//         email={this.state.email}
+//         password={this.state.password}
+//         handleInputChange={this.handleInputChange}
+//         handleFormSubmit={this.handleFormSubmit}
+//       />
+//     );
+//   }
+// }
 
-export default FormLogin;
+// export default FormLogin;

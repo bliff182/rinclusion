@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Alert from "../components/Alert";
 import PrevLiked from "../components/Liked";
-import SwipeableTemporaryDrawer from "../components/Leftbar";
+import Left from "../components/Leftbar/getLiked";
 import Container from "@material-ui/core/Container";
+import LeftBar from "../components/Leftbar/getLiked";
 
 class LikedRestaurants extends Component {
   state = {
@@ -34,7 +35,7 @@ class LikedRestaurants extends Component {
           >
             {this.state.error}
           </Alert>
-          <SwipeableTemporaryDrawer grabLikes={this.grabLikes} />
+          <Left grabLikes={this.grabLikes} />
           <PrevLiked restaurants={this.state.restaurants} />
         </Container>
       </div>
