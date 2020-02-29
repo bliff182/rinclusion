@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
               
             </IconButton>
             <Typography variant="h3" style={{textAlign:"center"}} className={classes.title}>
-              Account
+              Settings
             </Typography>
             {auth && (
               <div>

@@ -78,7 +78,7 @@ export default function NestedGrid() {
             style={{ fontSize:"20px", border:"1px solid gray", borderRadius:"5px", margin:"40px auto 50px auto", zIndex:"2"}}
         >Finish</Button>
         <Button color="gray"
-            style={{ fontSize:"20px", fontSize:"12px", borderRadius:"5px", float:"right", marginLeft:"0px", marginBottom:"50px", marginTop:"40px", marginRight:"0px"}}
+            style={{ fontSize:"12px", borderRadius:"5px", float:"right", marginLeft:"0px", marginBottom:"50px", marginTop:"40px", marginRight:"0px"}}
         ><a 
             style={{ textDecoration:"none", color:"inherit"}}
         href="/Discover">skip</a><SkipNextIcon fontSize="small" ></SkipNextIcon></Button>
