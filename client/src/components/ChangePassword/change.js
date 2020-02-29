@@ -1,10 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import * as firebase from "firebase";
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,7 +62,6 @@ function ChangePass(props) {
             type="password"
             label="Current Password"
           />
-
           <TextField
             // style={{marginRight:"30px" }}
             id="standard-basic"

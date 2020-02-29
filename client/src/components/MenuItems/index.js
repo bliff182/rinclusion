@@ -1,6 +1,6 @@
 import React from "react";
-import MenuItem from '@material-ui/core/MenuItem';
-import TransitionsModal from "../LogoutModal"
+import MenuItem from "@material-ui/core/MenuItem";
+import TransitionsModal from "../LogoutModal";
 // import "./style.css";
 
 function MenuItems() {

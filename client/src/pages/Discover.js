@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-// import Card from "../components/Card";
 import RestaurantCard from "../components/Restaurant";
 import NavBar from "../components/Nav";
-
 // import Alert from "../components/Alert";
+// import Card from "../components/Card";
 
 class Discover extends Component {
   state = {
@@ -36,15 +35,9 @@ class Discover extends Component {
   loadNextRestaurant() {
     API.getRestaurants()
       .then(res => {
-        const {
-          id,
-          name,
-          image_url,
-          url,
-          price,
-          location,
-          categories
-        } = res.data[this.state.index];
+        const { id, name, image_url, url, price, location } = res.data[
+          this.state.index
+        ];
         this.setState({
           yelpId: id,
           name: name,
@@ -52,11 +45,14 @@ class Discover extends Component {
           url: url,
           price: price,
           location: location,
-          categories: categories,
           restaurants: res.data,
           current: res.data[this.state.index]
         });
-        // console.log(this.state);
+        const currentCategories = this.state.current.categories.map(result => {
+          return result.title;
+        });
+        const formattedCategories = currentCategories.join(", ");
+        this.setState({ categories: formattedCategories });
       })
       .catch(err => console.log(err));
   }
@@ -100,9 +96,9 @@ class Discover extends Component {
   render() {
     return (
       <div>
-        <NavBar></NavBar>
+        <NavBar />
         <RestaurantCard
-          style={{ marginTop: "80px" }}
+          // style={{ marginTop: "400px" }}
           id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}

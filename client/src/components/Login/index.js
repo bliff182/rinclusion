@@ -1,10 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import * as firebase from "firebase";
-
 // import "./style.css";
 
 const useStyles = makeStyles(theme => ({
@@ -15,9 +13,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Form(props) {
+function FormLogin(props) {
   const classes = useStyles();
   const { email, password, handleInputChange, handleFormSubmit } = props;
+
   return (
     <div style={{ textAlign: "center" }}>
       <form
@@ -72,6 +71,7 @@ function Form(props) {
   );
 }
 
+<<<<<<< HEAD
 export default Form;
 
 // class FormLogin extends Component {
@@ -127,3 +127,6 @@ export default Form;
 // }
 
 // export default FormLogin;
+=======
+export default FormLogin;
+>>>>>>> bb8e2df3a69ce0c7c09c33144ddf60bdc16c4659

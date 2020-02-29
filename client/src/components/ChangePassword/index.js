@@ -4,7 +4,6 @@ import * as firebase from "firebase";
 // import API from "../utils";
 import ChangePass from "./change.js"
 
-
 class Settings extends Component {
   state = {
     password: "",

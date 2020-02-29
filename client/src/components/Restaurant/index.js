@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-
 // import "./styles.css";
 
 const useStyles = makeStyles({
@@ -37,18 +36,15 @@ function RestaurantCard(props) {
       className={classes.root}
       mx="auto"
     >
-      <CardActionArea 
-      href={props.url} target="_blank"
-      rel="noopener noreferrer">
-        
-      <CardMedia
+      <CardActionArea>
+        <CardMedia
           className={classes.media}
           image={props.image}
           title={props.name}
-          style={{ height:"400px"}}
+          style={{ height: "400px" }}
         />
         <CardContent>
-        
+          <a href={props.url} target="_blank" rel="noopener noreferrer">
             <Typography
               gutterBottom
               variant="h5"
@@ -57,20 +53,24 @@ function RestaurantCard(props) {
             >
               {props.name}
             </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" >
+          </a>
+          <Typography variant="body2" color="textSecondary" component="p">
             <h6>{props.location.address1}</h6>
             <h6>
               {props.location.city}, {props.location.state}{" "}
               {props.location.zip_code}
             </h6>
             <p>Price: {props.price}</p>
-            {/* Figure out how to get categories on page */}
-            {/* <p>Type: {props.categories[0].title}</p> */}
+            <p>Type: {props.categories}</p>
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions style={{ justifyContent: "space-between" }}>
-        <Fab style={{ backgroundColor:"red"}} aria-label="dislike" onClick={props.onClickTwo}>
+        <Fab
+          style={{ backgroundColor: "red" }}
+          aria-label="dislike"
+          onClick={props.onClickTwo}
+        >
           <CloseRoundedIcon />
         </Fab>
         <Fab

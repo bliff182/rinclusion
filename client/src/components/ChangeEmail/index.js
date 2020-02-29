@@ -8,12 +8,19 @@ import ChangeEmail from "./change.js"
 
 class Settings extends Component {
   state = {
-    email: ""
+    newEmail: "",
+    currentEmail: ""
   };
 
   // grab current password, username, display name
   getUserInfo = () => {
-
+    API.getUserEmail()
+    .then(res => {
+      this.setState({
+        currentEmail: res.data
+      });
+    })
+    .catch(err => console.log(err));
   }
 
   handleInputChange = event => {
@@ -27,29 +34,29 @@ class Settings extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (!this.state.email) {
+    if (!this.state.newEmail) {
       alert("Please fill out every field");
-    } else if (!this.state.email.includes("@", ".")) {
+    } else if (!this.state.newEmail.includes("@", ".")) {
       alert(
         "Invalid email, please ensure the email is in the format of 'user@email.com'"
       );
     } else {
       firebase
       .auth()
-    //   .createUserWithEmailAndPassword(this.state.email, this.state.password)
+    //   .createUserWithEmailAndPassword(this.state.newEmail, this.state.password)
       .catch(error => {
         const errorCode = error.errorCode;
         const errorMessage = error.errorMessage;
         console.log(errorCode);
         console.log(errorMessage);
         this.setState({
-          email: ""
+          newEmail: ""
         });
       });
 
       
       this.setState({
-        email: ""
+        newEmail: ""
       });
     }
   };
@@ -58,7 +65,7 @@ class Settings extends Component {
     return (
       <div>
       <ChangeEmail
-        email={this.state.email}
+        newEmail={this.state.newEmail}
         handleInputChange={this.handleInputChange}
         handleFormSubmit={this.handleFormSubmit}
       />
