@@ -30,7 +30,7 @@ function ChangePass(props) {
         style={
           ({ textAlign: "center" },
           { padding: "50px" },
-          { maxWidth: "100%" },
+        //   { maxWidth: "100%" },
           { marginTop: "30px" })
         }
       >
@@ -42,37 +42,55 @@ function ChangePass(props) {
                 marginBottom:'50px'
             }}
         >
-        <h5
+        <h6
             style={{
                 float:"left"
             }}
-        >Change Password:</h5>
-          <TextField
-            style={{ marginBottom: "20px", marginRight:"30px" }}
-            id="outlined-basic"
-            variant="outlined"
+        >Change Password:</h6>
+        <Container 
+            style={{
+                width:"300px",
+                textAlign:"center",
+                // margin:"0"
+            }}
+        >
+        <TextField
+            // style={{marginRight:"30px" }}
+            id="standard-basic"
+            variant="standard"
             value={password}
             name="password"
             onChange={handleInputChange}
             type="password"
-            label="Password"
+            label="Current Password"
+          />
+
+          <TextField
+            // style={{marginRight:"30px" }}
+            id="standard-basic"
+            variant="standard"
+            value={password}
+            name="password"
+            onChange={handleInputChange}
+            type="password"
+            label="New Password"
           />
         
        
           <TextField
-            style={{ marginBottom: "20px", marginRight:"30px" }}
-            id="outlined-basic"
-            variant="outlined"
+            // style={{marginRight:"30px", }}
+            id="standard-basic"
+            variant="standard"
             value={confirmPass}
             name="confirmPass"
             onChange={handleInputChange}
             type="password"
-            label="Confirm password"
+            label="Re-enter New"
           />
-        
+        </Container>
         <Button
           variant="contained"
-          style={{ backgroundColor: "red", float:"right" }}
+          style={{ backgroundColor: "gray", textAlign:"right", marginTop:"30px"}}
           onClick={handleFormSubmit}
         >
           Change Password

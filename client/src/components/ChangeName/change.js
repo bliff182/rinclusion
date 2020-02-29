@@ -39,25 +39,32 @@ function ChangeName(props) {
                 marginBottom:"100px"
             }}
         >
-          <h5
+          <h6
             style={{
                 float:'left'
             }}
-          >Change Display Name:</h5>
+          >Change Display Name:</h6>
+          <Container 
+            style={{
+                width:"300px",
+                textAlign:"center",
+                // margin:"0"
+            }}
+        >
           <TextField
             style={{ marginBottom: "20px" }}
-            id="outlined-basic"
-            variant="outlined"
+            id="standard-basic"
+            variant="standard"
             value={name}
             name="name"
             onChange={handleInputChange}
             type="text"
             label="Name"
           />
-        
+        </Container>
         <Button
           variant="contained"
-          style={{ backgroundColor: "red", float:"right" }}
+          style={{ backgroundColor: "gray", textAlign:"right", marginTop:"10px" }}
           onClick={handleFormSubmit}
         >
           Change Name
