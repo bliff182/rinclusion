@@ -4,26 +4,44 @@ import Alert from "../components/Alert";
 import PrevLiked from "../components/Liked";
 import Left from "../components/Leftbar/getLiked";
 import Container from "@material-ui/core/Container";
-import LeftBar from "../components/Leftbar/getLiked";
+import PrevDisliked from "../components/Disliked"
 
 class LikedRestaurants extends Component {
   state = {
-    restaurants: []
+    liked: [],
+    disliked: []
   };
 
   componentDidMount() {
     this.grabLikes();
+    this.gradDislikes();
+    console.log(this.state)
   }
 
   grabLikes() {
     API.getLikes()
       .then(res => {
         this.setState({
-          restaurants: res.data
+          liked: res.data
         });
+        console.log(res.data)
       })
+      
       .catch(err => console.log(err));
   }
+
+  
+  gradDislikes() {
+    API.getDislikes()
+      .then(res => {
+        this.setState({
+          disliked: res.data
+        })
+      })
+      .catch(err => console.log(err)); 
+  }
+
+  
 
   render() {
     return (
@@ -35,8 +53,19 @@ class LikedRestaurants extends Component {
           >
             {this.state.error}
           </Alert>
-          <Left grabLikes={this.grabLikes} />
-          <PrevLiked restaurants={this.state.restaurants} />
+          {/* <Left grabLikes={this.grabLikes} /> */}
+          <PrevLiked  
+            style={{
+              float:"left",
+              width:"50px"
+            }}
+          liked={this.state.liked} />
+          <PrevDisliked   
+            style={{
+              width:"50px",
+              float:"right"
+            }}
+          disliked={this.state.disliked} />
         </Container>
       </div>
     );
