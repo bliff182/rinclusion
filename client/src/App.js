@@ -109,7 +109,7 @@ class App extends Component {
                   <Settings />
                 )}
               </Route>
-              <Route exact path="/viewed">
+              <Route exact path="/liked">
                 {this.state.authenticated === false ? (
                   <Redirect to="/signup" />
                 ) : (
