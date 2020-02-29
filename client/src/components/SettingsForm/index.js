@@ -1,10 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import * as firebase from "firebase";
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,8 +47,9 @@ function SettingsForm(props) {
             label="Name"
           />
         </Container>
-        
-        <Container><h4>Change Email:</h4>
+
+        <Container>
+          <h4>Change Email:</h4>
           <TextField
             style={{ marginBottom: "20px" }}
             id="outlined-basic"
@@ -63,7 +62,6 @@ function SettingsForm(props) {
           />
         </Container>
         <Container>
-
           <TextField
             style={{ marginBottom: "20px" }}
             id="outlined-basic"
@@ -94,8 +92,13 @@ function SettingsForm(props) {
         >
           hello1
         </Button>
-        <p style={({ textAlign: "center" }, { fontSize: "12px" })}>Already have an account?</p>
-        <a style={({ textAlign: "center" }, { fontSize: "12px" })} href="/Login">
+        <p style={({ textAlign: "center" }, { fontSize: "12px" })}>
+          Already have an account?
+        </p>
+        <a
+          style={({ textAlign: "center" }, { fontSize: "12px" })}
+          href="/Login"
+        >
           hello
         </a>
       </form>

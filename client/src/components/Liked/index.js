@@ -18,7 +18,6 @@ function PrevLiked(props) {
       ))}
     </List>
   );
-  // console.log(props.restaurants);
 }
 
 export default PrevLiked;

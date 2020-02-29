@@ -13,23 +13,21 @@ import Signup from "./pages/Signup";
 import Viewed from "./pages/Liked";
 import Container from "@material-ui/core/Container";
 import Account from "./pages/Account";
-// import Liked from "./pages/Liked";
 import Preferences from "./pages/Preferences";
-// import SwipeableTemporaryDrawer from "./components/Drawer";
 import fire from "./config/Fire";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
+// import SwipeableTemporaryDrawer from "./components/Drawer";
+// import Liked from "./pages/Liked";
 
 class App extends Component {
   state = {
-    // user: {},
     authenticated: false,
     loading: true
   };
 
   componentWillMount() {
     this.authListener();
-    // console.log(this.state.user);
     console.table(this.state);
   }
 
@@ -37,7 +35,6 @@ class App extends Component {
     fire.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
-          // user: { user },
           authenticated: true,
           loading: false
         });
@@ -45,7 +42,6 @@ class App extends Component {
         console.table(this.state);
       } else {
         this.setState({
-          // user: null,
           authenticated: false,
           loading: false
         });
@@ -54,7 +50,6 @@ class App extends Component {
   };
 
   render() {
-    // Do something different if loading... add spinner?
     if (this.state.loading) {
       return (
         <div
@@ -65,7 +60,6 @@ class App extends Component {
             left: "50%"
           }}
         >
-          {/* <NavBar /> */}
           <h3>Loading...</h3>
           <br />
           <Spinner animation="border" role="status">
@@ -78,35 +72,8 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          {/* {this.state.user === true ? (
-            <Container>
-              <Route exact path="/" component={Discover} />
-              <Route exact path="/discover" component={Discover} />
-              <Route exact path="/account" component={Account} />
-              <Route exact path="/settings" component={Settings} />
-              <Route exact path="/viewed" component={Viewed} />
-              <Route exact path="/preferences" component={Preferences} />
-            </Container>
-          ) : (
-            <Container>
-              <Route exact path="/" component={Signup} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/login" component={LogIn} />
-            </Container>
-          )} */}
           <Container style={{ marginTop: "100px" }}>
             <Switch>
-              {/* <Route exact path="/" component={LogIn} />
-
-            <Route exact path="/Login" component={LogIn} />
-            <Route exact path="/Discover" component={Discover} />
-            <Route exact path="/Liked" component={Liked} />
-            <Route exact path="/Account" component={Account} />
-            <Route exact path="/Settings" component={Settings} />
-            <Route exact path="/Viewed" component={Viewed} />
-            <Route exact path="/Signup" component={Signup} />
-            <Route exact path="/Preferences" component={Preferences} /> */}
-
               <Route exact path="/">
                 {this.state.authenticated === true ? (
                   <Redirect to="/discover" />
@@ -163,10 +130,35 @@ class App extends Component {
                   <Discover />
                 )}
               </Route>
-
               {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
             </Switch>
           </Container>
+          {/* {this.state.user === true ? (
+            <Container>
+              <Route exact path="/" component={Discover} />
+              <Route exact path="/discover" component={Discover} />
+              <Route exact path="/account" component={Account} />
+              <Route exact path="/settings" component={Settings} />
+              <Route exact path="/viewed" component={Viewed} />
+              <Route exact path="/preferences" component={Preferences} />
+            </Container>
+          ) : (
+            <Container>
+              <Route exact path="/" component={Signup} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/login" component={LogIn} />
+            </Container>
+          )} */}
+          {/* <Route exact path="/" component={LogIn} />
+
+            <Route exact path="/Login" component={LogIn} />
+            <Route exact path="/Discover" component={Discover} />
+            <Route exact path="/Liked" component={Liked} />
+            <Route exact path="/Account" component={Account} />
+            <Route exact path="/Settings" component={Settings} />
+            <Route exact path="/Viewed" component={Viewed} />
+            <Route exact path="/Signup" component={Signup} />
+            <Route exact path="/Preferences" component={Preferences} /> */}
         </div>
       </Router>
     );

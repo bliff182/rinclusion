@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from "@material-ui/icons/Menu";
 import Divider from "@material-ui/core/Divider";
 import API from "../../utils/API";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -12,55 +12,55 @@ import MailIcon from "@material-ui/icons/Mail";
 import PrevLiked from "../Liked";
 
 const useStyles = makeStyles({
-    list: {
-        width: 250
-    },
-    fullList: {
-        width: "auto"
-    }
+  list: {
+    width: 250
+  },
+  fullList: {
+    width: "auto"
+  }
 });
 
 function SwipeableTemporaryDrawer() {
-    const classes = useStyles();
-    const [state, setState] = React.useState({
-        left: false
-    });
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    left: false
+  });
 
-    const toggleDrawer = (side, open) => event => {
-        if (
-            event &&
-            event.type === "keydown" &&
-            (event.key === "Tab" || event.key === "Shift")
-        ) {
-            return;
-        }
-        setState({ ...state, [side]: open });
-    };
+  const toggleDrawer = (side, open) => event => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setState({ ...state, [side]: open });
+  };
 
-    const sideList = side => (
-        <div
-            className={classes.list}
-            role="presentation"
-            onClick={toggleDrawer(side, false)}
-            onKeyDown={toggleDrawer(side, false)}
-        >
-       <PrevLiked></PrevLiked>
-        </div>
-    );
+  const sideList = side => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <PrevLiked />
+    </div>
+  );
 
-    return (
-        <div>
-            <MenuIcon onClick={toggleDrawer("left", true)} href="/Liked"></MenuIcon>
-            <SwipeableDrawer
-                open={state.left}
-                onClose={toggleDrawer("left", false)}
-                onOpen={toggleDrawer("left", true)}
-                // handlegetlikedrestaurants={this.handlegetlikedrestaurants}
-            >
-                {sideList("left")}
-            </SwipeableDrawer>
-        </div>
-    );
+  return (
+    <div>
+      <MenuIcon onClick={toggleDrawer("left", true)} href="/Liked"></MenuIcon>
+      <SwipeableDrawer
+        open={state.left}
+        onClose={toggleDrawer("left", false)}
+        onOpen={toggleDrawer("left", true)}
+        // handlegetlikedrestaurants={this.handlegetlikedrestaurants}
+      >
+        {sideList("left")}
+      </SwipeableDrawer>
+    </div>
+  );
 }
 
 export default SwipeableTemporaryDrawer;

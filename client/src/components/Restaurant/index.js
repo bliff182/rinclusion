@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-
 // import "./styles.css";
 
 const useStyles = makeStyles({
@@ -62,7 +61,6 @@ function RestaurantCard(props) {
               {props.location.zip_code}
             </h6>
             <p>Price: {props.price}</p>
-            {/* Figure out how to get categories on page */}
             <p>Type: {props.categories}</p>
           </Typography>
         </CardContent>
