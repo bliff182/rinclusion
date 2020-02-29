@@ -1,23 +1,19 @@
-import React, { Component }  from "react";
+import React, { Component } from "react";
 import FormLogin from "../components/Login";
 import Logo from "../components/Logo";
-import * as firebase from "firebase";
+import fire from "../config/Fire";
 
-
-class Login extends Component {
+class LogIn extends Component {
   state = {
     email: "",
     password: ""
   };
 
   handleInputChange = event => {
-    let value = event.target.value;
-    const name = event.target.name;
-
-    if (name === "password") {
-      value = value.substring(0, 30);
-    }
-
+    const { name, value } = event.target;
+    // if (name === "password") {
+    //   value = value.substring(0, 30);
+    // }
     this.setState({
       [name]: value
     });
@@ -28,7 +24,7 @@ class Login extends Component {
     if (!this.state.email || !this.state.password) {
       alert("Please fill out every field");
     } else {
-      firebase
+      fire
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .catch(error => {
@@ -36,10 +32,6 @@ class Login extends Component {
           const errorMessage = error.errorMessage;
           console.log(errorCode);
           console.log(errorMessage);
-          this.setState({
-            email: "",
-            password: ""
-          });
         });
     }
   };
@@ -47,16 +39,16 @@ class Login extends Component {
   render() {
     return (
       <div>
-      <Logo></Logo>
-      <FormLogin
-        email={this.state.email}
-        password={this.state.password}
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-      />
+        <Logo></Logo>
+        <FormLogin
+          email={this.state.email}
+          password={this.state.password}
+          handleInputChange={this.handleInputChange}
+          handleFormSubmit={this.handleFormSubmit}
+        />
       </div>
     );
   }
 }
 
-export default Login;
+export default LogIn;

@@ -1,77 +1,61 @@
-import React, { Component } from "react";
-import * as firebase from "firebase";
-// import SettingsForm from "../components/SettingsForm";
-// import API from "../utils";
-import ChangeEmail from "./change.js"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
-
-
-class Settings extends Component {
-  state = {
-    newEmail: "",
-    currentEmail: ""
-  };
-
-  // grab current password, username, display name
-  getUserInfo = () => {
-    API.getUserEmail()
-    .then(res => {
-      this.setState({
-        currentEmail: res.data
-      });
-    })
-    .catch(err => console.log(err));
-  }
-
-  handleInputChange = event => {
-    let value = event.target.value;
-    const name = event.target.name;
-
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (!this.state.newEmail) {
-      alert("Please fill out every field");
-    } else if (!this.state.newEmail.includes("@", ".")) {
-      alert(
-        "Invalid email, please ensure the email is in the format of 'user@email.com'"
-      );
-    } else {
-      firebase
-      .auth()
-    //   .createUserWithEmailAndPassword(this.state.newEmail, this.state.password)
-      .catch(error => {
-        const errorCode = error.errorCode;
-        const errorMessage = error.errorMessage;
-        console.log(errorCode);
-        console.log(errorMessage);
-        this.setState({
-          newEmail: ""
-        });
-      });
-
-      
-      this.setState({
-        newEmail: ""
-      });
+const useStyles = makeStyles(theme => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1)
     }
-  };
-
-  render() {
-    return (
-      <div>
-      <ChangeEmail
-        newEmail={this.state.newEmail}
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-      />
-      </div>
-    );
   }
+}));
+
+function ChangeEmail(props) {
+  const classes = useStyles();
+  const { email, handleInputChange, handleEmailChange } = props;
+  return (
+    <div style={{ textAlign: "center" }}>
+      <form
+        className={classes.root}
+        autoComplete="off"
+        style={
+          ({ textAlign: "center" },
+          { padding: "50px" },
+          { maxWidth: "100%" },
+          { marginTop: "30px" })
+        }
+      >
+        <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
+          <h6 style={{ float: "left" }}>Change Email:</h6>
+          <Container style={{ width: "300px", textAlign: "center" }}>
+            <TextField
+              style={{ marginBottom: "20px" }}
+              id="standard-basic"
+              variant="standard"
+              value={email}
+              name="email"
+              onChange={handleInputChange}
+              type="email"
+              label="Email"
+            />
+          </Container>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "gray",
+              textAlign: "right",
+              marginTop: "10px"
+            }}
+            onClick={handleEmailChange}
+          >
+            Change Email
+          </Button>
+        </Container>
+      </form>
+    </div>
+  );
 }
 
-export default Settings;
+export default ChangeEmail;

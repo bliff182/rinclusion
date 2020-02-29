@@ -1,77 +1,106 @@
-import React, { Component } from "react";
-import * as firebase from "firebase";
-// import SettingsForm from "../components/SettingsForm";
-// import API from "../utils";
-import ChangePass from "./change.js"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
-class Settings extends Component {
-  state = {
-    password: "",
-    confirmPass: ""
-  };
-
-  // grab current password, username, display name
-  getUserInfo = () => {
-
-  }
-
-  handleInputChange = event => {
-    let value = event.target.value;
-    const name = event.target.name;
-
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (!this.state.password) {
-      alert("Please fill out every field");
-    } else if (this.state.password.length < 6) {
-      alert(`Please choose a more secure password`);
-    } else if (
-      !this.state.password.match(/\d+/g) ||
-      !this.state.password.match(/[a-zA-Z]/)
-    ) {
-      alert("Please ensure the password contains letters and numbers");
-    } else if (this.state.password !== this.state.confirmPass) {
-      alert("Passwords do not match");
-    } else {
-      firebase
-      .auth()
-      // .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .catch(error => {
-        const errorCode = error.errorCode;
-        const errorMessage = error.errorMessage;
-        console.log(errorCode);
-        console.log(errorMessage);
-        this.setState({
-          password: "",
-          confirmPass: ""
-        });
-      });
-
-      
-      this.setState({
-        password: "",
-        confirmPass: ""
-      });
+const useStyles = makeStyles(theme => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1)
     }
-  };
-
-  render() {
-    return (
-      <div>
-      <ChangePass 
-        password={this.state.password}
-        confirmPass={this.state.confirmPass}
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-      />
-      </div>
-    );
   }
+}));
+
+function ChangePass(props) {
+  const classes = useStyles();
+  const {
+    currentPass,
+    newPass,
+    confirmPass,
+    handleInputChange,
+    handlePasswordChange
+  } = props;
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <form
+        className={classes.root}
+        autoComplete="off"
+        style={
+          ({ textAlign: "center" },
+          { padding: "50px" },
+          //   { maxWidth: "100%" },
+          { marginTop: "30px" })
+        }
+      >
+        <Container
+          style={{
+            marginTop: "50px",
+            marginBottom: "50px"
+          }}
+        >
+          <h6
+            style={{
+              float: "left"
+            }}
+          >
+            Change Password:
+          </h6>
+          <Container
+            style={{
+              width: "300px",
+              textAlign: "center"
+              // margin:"0"
+            }}
+          >
+            <TextField
+              // style={{marginRight:"30px" }}
+              id="standard-basic"
+              variant="standard"
+              value={currentPass}
+              name="currentPass"
+              onChange={handleInputChange}
+              type="password"
+              label="Current Password"
+            />
+            <TextField
+              // style={{marginRight:"30px" }}
+              id="standard-basic"
+              variant="standard"
+              value={newPass}
+              name="newPass"
+              onChange={handleInputChange}
+              type="password"
+              label="New Password"
+            />
+
+            <TextField
+              // style={{marginRight:"30px", }}
+              id="standard-basic"
+              variant="standard"
+              value={confirmPass}
+              name="confirmPass"
+              onChange={handleInputChange}
+              type="password"
+              label="Re-enter New"
+            />
+          </Container>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "gray",
+              textAlign: "right",
+              marginTop: "30px"
+            }}
+            onClick={handlePasswordChange}
+          >
+            Change Password
+          </Button>
+        </Container>
+      </form>
+    </div>
+  );
 }
 
-export default Settings;
+export default ChangePass;
