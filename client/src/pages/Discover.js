@@ -7,9 +7,14 @@ import NavBar from "../components/Nav";
 
 class Discover extends Component {
   state = {
-    apiZip: "",
-    apiPrice: "",
-    apiCuisines: [],
+    // apiZip: localStorage.getItem("zipcode"),
+    // apiPrice: "",
+    // apiCuisines: [],
+    query: {
+      location: localStorage.getItem("zipcode"),
+      price: localStorage.getItem("price"),
+      categories: localStorage.getItem("cuisines")
+    },
     yelpId: "",
     name: "",
     image_url: "",
@@ -24,11 +29,11 @@ class Discover extends Component {
 
   // When the component mounts, load the next restaurant to be displayed
   componentDidMount() {
-    this.setState({
-      apiZip: localStorage.getItem("zipcode"),
-      apiPrice: localStorage.getItem("price"),
-      apiCuisines: localStorage.getItem("cuisines")
-    });
+    // this.setState({
+    //   apiZip: localStorage.getItem("zipcode"),
+    //   apiPrice: localStorage.getItem("price"),
+    //   apiCuisines: localStorage.getItem("cuisines")
+    // });
     this.loadNextRestaurant();
   }
 
@@ -40,11 +45,13 @@ class Discover extends Component {
     this.loadNextRestaurant();
   };
 
-  loadNextRestaurant() {
-    const zip = localStorage.getItem("zipcode");
-    const pricePref = localStorage.getItem("price");
-    const cuisines = localStorage.getItem("cuisines");
-    API.getRestaurants()
+  loadNextRestaurant = () => {
+    // const zip = localStorage.getItem("zipcode");
+    // const pricePref = localStorage.getItem("price");
+    // const cuisines = localStorage.getItem("cuisines");
+
+    // API.getRestaurants()
+    API.getRestaurants(this.state.query)
       .then(res => {
         const { id, name, image_url, url, price, location } = res.data[
           this.state.index
@@ -66,7 +73,7 @@ class Discover extends Component {
         this.setState({ categories: formattedCategories });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleLike = () => {
     API.likeOrDislike({

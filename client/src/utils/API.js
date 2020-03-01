@@ -2,9 +2,14 @@ import axios from "axios";
 
 export default {
   // Gets restaurants from the Yelp API
-  getRestaurants: function(q) {
-    // return axios.get("/api/yelp", { params: { q: "&location:" + q } });
-    return axios.get("/api/yelp");
+  getRestaurants: function(query) {
+    // return axios.get("/api/yelp", { params: { location: zip } });
+    //   params: { zip: "location=" + zip },
+    //   price: "price=" + price,
+    //   categories: "categories=" + cuisine
+    // });
+    return axios.get("/api/yelp", { params: query });
+    // return axios.get("/api/yelp");
   },
   // Gets all liked Restaurants
   getLikes: function() {
