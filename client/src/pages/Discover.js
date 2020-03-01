@@ -12,6 +12,7 @@ class Discover extends Component {
     image_url: "",
     url: "",
     price: "",
+    rating: "",
     location: {},
     categories: [],
     restaurants: [],
@@ -35,7 +36,7 @@ class Discover extends Component {
   loadNextRestaurant() {
     API.getRestaurants()
       .then(res => {
-        const { id, name, image_url, url, price, location } = res.data[
+        const { id, name, image_url, url, price, rating, location } = res.data[
           this.state.index
         ];
         this.setState({
@@ -44,6 +45,7 @@ class Discover extends Component {
           image_url: image_url,
           url: url,
           price: price,
+          rating: rating,
           location: location,
           restaurants: res.data,
           current: res.data[this.state.index]
@@ -53,6 +55,8 @@ class Discover extends Component {
         });
         const formattedCategories = currentCategories.join(", ");
         this.setState({ categories: formattedCategories });
+        console.log(this.state)
+        
       })
       .catch(err => console.log(err));
   }
@@ -66,6 +70,7 @@ class Discover extends Component {
       categories: this.state.categories,
       location: this.state.location,
       price: this.state.price,
+      rating: this.state.rating,
       isLiked: true
     }).then(() => {
       this.setState({
@@ -84,6 +89,7 @@ class Discover extends Component {
       categories: this.state.categories,
       location: this.state.location,
       price: this.state.price,
+      rating: this.state.rating,
       isLiked: false
     }).then(() => {
       this.setState({
@@ -104,6 +110,7 @@ class Discover extends Component {
           image={this.state.image_url}
           url={this.state.url}
           price={this.state.price}
+          rating={this.state.rating}
           location={this.state.location}
           categories={this.state.categories}
           onClickOne={this.handleLike}
