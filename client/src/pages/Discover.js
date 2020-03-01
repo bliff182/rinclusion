@@ -7,9 +7,6 @@ import NavBar from "../components/Nav";
 
 class Discover extends Component {
   state = {
-    // apiZip: localStorage.getItem("zipcode"),
-    // apiPrice: "",
-    // apiCuisines: [],
     query: {
       location: localStorage.getItem("zipcode"),
       price: localStorage.getItem("price"),
@@ -29,11 +26,6 @@ class Discover extends Component {
 
   // When the component mounts, load the next restaurant to be displayed
   componentDidMount() {
-    // this.setState({
-    //   apiZip: localStorage.getItem("zipcode"),
-    //   apiPrice: localStorage.getItem("price"),
-    //   apiCuisines: localStorage.getItem("cuisines")
-    // });
     this.loadNextRestaurant();
   }
 
@@ -46,11 +38,6 @@ class Discover extends Component {
   };
 
   loadNextRestaurant = () => {
-    // const zip = localStorage.getItem("zipcode");
-    // const pricePref = localStorage.getItem("price");
-    // const cuisines = localStorage.getItem("cuisines");
-
-    // API.getRestaurants()
     API.getRestaurants(this.state.query)
       .then(res => {
         const { id, name, image_url, url, price, location } = res.data[

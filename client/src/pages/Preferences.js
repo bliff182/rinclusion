@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import NestedGrid from "../components/Preferences";
 import Logo from "../components/Logo";
 import PreferenceForm from "../components/PreferenceForm";
@@ -8,7 +9,8 @@ class Preferences extends Component {
     cuisines: [],
     zipcode: "",
     price: "",
-    checked: false
+    checked: false,
+    redirect: false
   };
 
   // use this upon submission ================================
@@ -20,6 +22,14 @@ class Preferences extends Component {
   // }
 
   // ========================================================
+
+  componentDidMount = () => {
+    this.setState({
+      price: 2,
+      cuisines: ["all"],
+      redirect: false
+    });
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -33,8 +43,6 @@ class Preferences extends Component {
       price: dataId
     });
   };
-
-  handleFormSubmit;
 
   selectCuisine = event => {
     const checked = event.target.value;
@@ -60,7 +68,7 @@ class Preferences extends Component {
     localStorage.setItem("price", this.state.price);
   };
 
-  // Saves inputs to local storage
+  // Save inputs to local storage, redirect to discover
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.zipcode) {
@@ -69,6 +77,9 @@ class Preferences extends Component {
       alert("Please enter a valid zipcode.");
     } else {
       this.setLocalStorage();
+      this.setState({
+        redirect: true
+      });
     }
   };
 
@@ -76,16 +87,22 @@ class Preferences extends Component {
     console.table(this.state);
     return (
       <div>
-        <Logo />
-        <PreferenceForm
-          zipcode={this.state.zipcode}
-          handleInputChange={this.handleInputChange}
-          getPricePref={this.getPricePref}
-        />
-        <NestedGrid
-          selectCuisine={this.selectCuisine}
-          handleFormSubmit={this.handleFormSubmit}
-        />
+        {this.state.redirect === true ? (
+          <Redirect to="/discover" />
+        ) : (
+          <div>
+            <Logo />
+            <PreferenceForm
+              zipcode={this.state.zipcode}
+              handleInputChange={this.handleInputChange}
+              getPricePref={this.getPricePref}
+            />
+            <NestedGrid
+              selectCuisine={this.selectCuisine}
+              handleFormSubmit={this.handleFormSubmit}
+            />
+          </div>
+        )}
       </div>
     );
   }
