@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItems from '../MenuItems';
-import Leftbar from "../Leftbar/getLiked";
+import Leftbar from "../Leftbar";
 
 
 const useStyles = makeStyles(theme => ({

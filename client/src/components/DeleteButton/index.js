@@ -7,9 +7,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 function DeleteButton() {
 
     return(
-        <Tooltip title="Reset">
+        <Tooltip title="Reset" style={{float:"right"}}>
             <IconButton aria-label="delete" >
-                <DeleteIcon fontSize="small"/>
+                <DeleteIcon fontSize="small" />
             </IconButton>
 
         </Tooltip>

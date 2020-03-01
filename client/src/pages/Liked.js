@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Alert from "../components/Alert";
 import PrevLiked from "../components/Liked";
-import Left from "../components/Leftbar/getLiked";
+// import Left from "../components/Leftbar";
 import Container from "@material-ui/core/Container";
 import PrevDisliked from "../components/Disliked"
 
