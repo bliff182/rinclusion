@@ -83,7 +83,7 @@ class App extends Component {
               </Route>
               <Route exact path="/signup">
                 {this.state.authenticated === true ? (
-                  <Redirect to="/discover" />
+                  <Redirect to="/preferences" />
                 ) : (
                   <Signup />
                 )}

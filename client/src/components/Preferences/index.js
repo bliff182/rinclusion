@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function NestedGrid(props) {
   const classes = useStyles();
-  const { selectCuisine, checked, handleFormSubmit } = props;
+  const { selectCuisine, checked, handleFormSubmit, handleSkip } = props;
 
   function FormRow() {
     return (
@@ -197,10 +197,11 @@ export default function NestedGrid(props) {
             marginTop: "40px",
             marginRight: "0px"
           }}
+          onClick={handleSkip}
         >
           <a
             style={{ textDecoration: "none", color: "inherit" }}
-            href="/Discover"
+            // href="/Discover"
           >
             skip
           </a>

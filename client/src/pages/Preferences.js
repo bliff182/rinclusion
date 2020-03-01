@@ -72,14 +72,29 @@ class Preferences extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.zipcode) {
-      alert("You didn't fill out a required field.");
+      alert("You didn't fill out a required field!");
     } else if (this.state.zipcode.length !== 5) {
-      alert("Please enter a valid zipcode.");
+      alert("Please enter a valid zip code.");
     } else {
       this.setLocalStorage();
       this.setState({
         redirect: true
       });
+    }
+  };
+
+  handleSkip = () => {
+    if (!this.state.zipcode) {
+      alert("You didn't fill out a required field!");
+    } else if (this.state.zipcode.length !== 5) {
+      alert("Please enter valid zip code.");
+    } else {
+      this.setState({
+        cuisines: "all",
+        price: 2,
+        redirect: true
+      });
+      this.setLocalStorage();
     }
   };
 
@@ -100,6 +115,7 @@ class Preferences extends Component {
             <NestedGrid
               selectCuisine={this.selectCuisine}
               handleFormSubmit={this.handleFormSubmit}
+              handleSkip={this.handleSkip}
             />
           </div>
         )}

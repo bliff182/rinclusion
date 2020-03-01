@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import FormC from "../components/Form";
 import fire from "../config/Fire";
 // import Logo from "../components/Logo";
@@ -8,7 +9,14 @@ class Signup extends Component {
     email: "",
     name: "",
     password: "",
-    confirmPass: ""
+    confirmPass: "",
+    redirect: false
+  };
+
+  componentDidMount = () => {
+    this.setState({
+      redirect: false
+    });
   };
 
   handleInputChange = event => {
@@ -51,7 +59,8 @@ class Signup extends Component {
             name: "",
             email: "",
             password: "",
-            confirmPass: ""
+            confirmPass: "",
+            redirect: true
           });
         });
 
@@ -66,14 +75,20 @@ class Signup extends Component {
 
   render() {
     return (
-      <FormC
-        email={this.state.email}
-        name={this.state.name}
-        password={this.state.password}
-        confirmPass={this.state.confirmPass}
-        handleInputChange={this.handleInputChange}
-        handleFormSubmit={this.handleFormSubmit}
-      />
+      <div>
+        {this.state.redirect === true ? (
+          <Redirect to="preferences" />
+        ) : (
+          <FormC
+            email={this.state.email}
+            name={this.state.name}
+            password={this.state.password}
+            confirmPass={this.state.confirmPass}
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+        )}
+      </div>
     );
   }
 }
