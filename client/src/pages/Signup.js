@@ -126,7 +126,7 @@ class Signup extends Component {
           show={this.state.visible}
           style={{ position: "fixed", maxWidth: "300px" }}
         >
-          <Alert.Heading>Oh 0o!</Alert.Heading>
+          <Alert.Heading>Oh No!</Alert.Heading>
           <p>{this.state.message}</p>
         </Alert>
       </div>
