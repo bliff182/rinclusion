@@ -13,6 +13,10 @@ export default {
   getDislikes: function() {
     return axios.get("/api/restaurants", { params: { isLiked: false } });
   },
+
+  getViewed: function() {
+    return axios.get("/api/restaurants", { params: { isLiked: true } || { isLiked: false } });
+  },
   // Deletes the liked restaurant
   deleteLike: function(id) {
     return axios.delete("/api/restaurants" + id);

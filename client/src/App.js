@@ -12,7 +12,6 @@ import Settings from "./pages/Settings";
 import Signup from "./pages/Signup";
 import Viewed from "./pages/Liked";
 import Container from "@material-ui/core/Container";
-import Account from "./pages/Account";
 import Preferences from "./pages/Preferences";
 import fire from "./config/Fire";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -96,13 +95,6 @@ class App extends Component {
                   <LogIn />
                 )}
               </Route>
-              <Route exact path="/account">
-                {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
-                ) : (
-                  <Account />
-                )}
-              </Route>
               <Route exact path="/settings">
                 {this.state.authenticated === false ? (
                   <Redirect to="/signup" />
@@ -110,7 +102,7 @@ class App extends Component {
                   <Settings />
                 )}
               </Route>
-              <Route exact path="/viewed">
+              <Route exact path="/liked">
                 {this.state.authenticated === false ? (
                   <Redirect to="/signup" />
                 ) : (

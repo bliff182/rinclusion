@@ -7,10 +7,9 @@ function MenuItems() {
     return (
         <div>
             <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/discover">Home</a></MenuItem>
-            <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/Account">Account</a></MenuItem>
+            <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/Liked">All Previous</a></MenuItem>
+            <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/Settings">Account</a></MenuItem>
             <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/Preferences">Preferences</a></MenuItem>
-            <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/Settings">Settings</a></MenuItem>
-            <MenuItem><a style={{ textDecoration:"none", color:"inherit"}} href="/Liked">Liked</a></MenuItem>
 
             <MenuItem><TransitionsModal></TransitionsModal></MenuItem>
         </div>
