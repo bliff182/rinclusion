@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import FormLogin from "../components/Login";
 import Logo from "../components/Logo";
 import fire from "../config/Fire";
+// import Toast from "react-bootstrap/Toast";
+import Alert from "react-bootstrap/Alert";
 
 class LogIn extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    visible: false,
+    message: ""
   };
 
   handleInputChange = event => {
@@ -22,30 +26,53 @@ class LogIn extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.email || !this.state.password) {
-      alert("Please fill out every field");
+      // alert("Please fill out every field");
+      this.setState({
+        visible: true,
+        message: "You didn't fill out a required field!"
+      });
     } else {
       fire
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .catch(error => {
-          const errorCode = error.errorCode;
-          const errorMessage = error.errorMessage;
+          const errorCode = error.code;
+          const errorMessage = error.message;
           console.log(errorCode);
-          console.log(errorMessage);
+          this.setState({
+            visible: true,
+            message: errorMessage
+          });
         });
     }
+  };
+
+  toggleAlert = () => {
+    this.setState({
+      visible: !this.state.visible
+    });
   };
 
   render() {
     return (
       <div>
-        <Logo></Logo>
+        <Logo />
         <FormLogin
           email={this.state.email}
           password={this.state.password}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
+        <Alert
+          variant="danger"
+          onClose={this.toggleAlert}
+          dismissible
+          show={this.state.visible}
+          style={{ position: "fixed", maxWidth: "300px" }}
+        >
+          <Alert.Heading>Oh no!</Alert.Heading>
+          <p>{this.state.message}</p>
+        </Alert>
       </div>
     );
   }

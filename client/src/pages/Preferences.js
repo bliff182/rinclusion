@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import NestedGrid from "../components/Preferences";
 import Logo from "../components/Logo";
 import PreferenceForm from "../components/PreferenceForm";
+// import Toast from "react-bootstrap/Toast";
+import Alert from "react-bootstrap/Alert";
 
 class Preferences extends Component {
   state = {
@@ -10,7 +12,9 @@ class Preferences extends Component {
     zipcode: "",
     price: "",
     checked: false,
-    redirect: false
+    redirect: false,
+    visible: false,
+    message: ""
   };
 
   // use this upon submission ================================
@@ -71,10 +75,18 @@ class Preferences extends Component {
   // Save inputs to local storage, redirect to discover
   handleFormSubmit = event => {
     event.preventDefault();
-    if (!this.state.zipcode) {
-      alert("You didn't fill out a required field!");
+    if (this.state.zipcode === "") {
+      // alert("You didn't fill out a required field!");
+      this.setState({
+        visible: true,
+        message: "You didn't fill out a required field!"
+      });
     } else if (this.state.zipcode.length !== 5) {
-      alert("Please enter a valid zip code.");
+      // alert("Please enter a valid zip code.");
+      this.setState({
+        visible: true,
+        message: "That zip code isn't valid!"
+      });
     } else {
       this.setLocalStorage();
       this.setState({
@@ -85,9 +97,17 @@ class Preferences extends Component {
 
   handleSkip = () => {
     if (!this.state.zipcode) {
-      alert("You didn't fill out a required field!");
+      // alert("You didn't fill out a required field!");
+      this.setState({
+        visible: true,
+        message: "You didn't fill out a required field!"
+      });
     } else if (this.state.zipcode.length !== 5) {
-      alert("Please enter valid zip code.");
+      // alert("Please enter valid zip code.");
+      this.setState({
+        visible: true,
+        message: "That zip code isn't valid!"
+      });
     } else {
       this.setState({
         cuisines: "all",
@@ -96,6 +116,12 @@ class Preferences extends Component {
       });
       this.setLocalStorage();
     }
+  };
+
+  toggleAlert = () => {
+    this.setState({
+      visible: !this.state.visible
+    });
   };
 
   render() {
@@ -117,6 +143,16 @@ class Preferences extends Component {
               handleFormSubmit={this.handleFormSubmit}
               handleSkip={this.handleSkip}
             />
+            <Alert
+              variant="danger"
+              onClose={this.toggleAlert}
+              dismissible
+              show={this.state.visible}
+              style={{ position: "fixed", maxWidth: "300px", top: "70%" }}
+            >
+              <Alert.Heading>Oh no!</Alert.Heading>
+              <p>{this.state.message}</p>
+            </Alert>
           </div>
         )}
       </div>
