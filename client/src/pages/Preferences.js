@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import NestedGrid from "../components/Preferences";
 import Logo from "../components/Logo";
 import PreferenceForm from "../components/PreferenceForm";
-// import Toast from "react-bootstrap/Toast";
 import Alert from "react-bootstrap/Alert";
 
 class Preferences extends Component {
@@ -16,16 +15,6 @@ class Preferences extends Component {
     visible: false,
     message: ""
   };
-
-  // use this upon submission ================================
-
-  // if (!this.state.zipcode || !this.state.price) {
-  //   alert("You didn't fill out a required field.")
-  // } else if (this.state.zipcode.length !== 5) {
-  //   alert("Please enter a valid zip code.")
-  // }
-
-  // ========================================================
 
   componentDidMount = () => {
     this.setState({
@@ -76,13 +65,11 @@ class Preferences extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.zipcode === "") {
-      // alert("You didn't fill out a required field!");
       this.setState({
         visible: true,
         message: "You didn't fill out a required field!"
       });
     } else if (this.state.zipcode.length !== 5) {
-      // alert("Please enter a valid zip code.");
       this.setState({
         visible: true,
         message: "That zip code isn't valid!"
@@ -97,13 +84,11 @@ class Preferences extends Component {
 
   handleSkip = () => {
     if (!this.state.zipcode) {
-      // alert("You didn't fill out a required field!");
       this.setState({
         visible: true,
         message: "You didn't fill out a required field!"
       });
     } else if (this.state.zipcode.length !== 5) {
-      // alert("Please enter valid zip code.");
       this.setState({
         visible: true,
         message: "That zip code isn't valid!"

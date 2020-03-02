@@ -104,7 +104,6 @@ class Discover extends Component {
       <div>
         <NavBar />
         <RestaurantCard
-          // style={{ marginTop: "400px" }}
           id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}

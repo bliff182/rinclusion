@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import FormLogin from "../components/Login";
 import Logo from "../components/Logo";
 import fire from "../config/Fire";
-// import Toast from "react-bootstrap/Toast";
 import Alert from "react-bootstrap/Alert";
 
 class LogIn extends Component {
@@ -26,7 +25,6 @@ class LogIn extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.email || !this.state.password) {
-      // alert("Please fill out every field");
       this.setState({
         visible: true,
         message: "You didn't fill out a required field!"

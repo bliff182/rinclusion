@@ -2,14 +2,9 @@ require("dotenv").config();
 const axios = require("axios");
 const db = require("../models");
 
-console.log(process.env.YELP_API_KEY);
-
-// EXACT REQUEST SYNTAX EXAMPLE:
-// https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50&location=10065&price=1&categories=comfortfood,vegan
-
-const BASEURL =
-  // "https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065&limit=50";
-  "https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50";
+// const BASEURL =
+// "https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065&limit=50";
+// "https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50";
 const config = {
   headers: {
     Authorization: `Bearer ${process.env.YELP_API_KEY}`

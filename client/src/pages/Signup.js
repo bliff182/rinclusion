@@ -35,21 +35,16 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.name || !this.state.email || !this.state.password) {
-      // alert("Please fill out every field");
       this.setState({
         visible: true,
         message: "You didn't fill out every field!"
       });
     } else if (this.state.password.length < 6) {
-      // alert(`Please choose a more secure password`);
       this.setState({
         visible: true,
         message: "That password isn't secure enough!"
       });
     } else if (!this.state.email.includes("@", ".")) {
-      // alert(
-      //   "Invalid email, please ensure the email is in the format of 'user@email.com'"
-      // );
       this.setState({
         visible: true,
         message: "That email is invalid!"
@@ -58,13 +53,11 @@ class Signup extends Component {
       !this.state.password.match(/\d+/g) ||
       !this.state.password.match(/[a-zA-Z]/)
     ) {
-      // alert("Please ensure the password contains letters and numbers");
       this.setState({
         visible: true,
         message: "That password doesn't contain both letters and numbers!"
       });
     } else if (this.state.password !== this.state.confirmPass) {
-      // alert("Passwords do not match");
       this.setState({
         visible: true,
         message: "Those passwords don't match!"
@@ -110,7 +103,6 @@ class Signup extends Component {
     }
     return (
       <div>
-        {/* <Toast ref={(element) => {this.toast = element}} /> */}
         <FormC
           email={this.state.email}
           name={this.state.name}
