@@ -7,6 +7,11 @@ import NavBar from "../components/Nav";
 
 class Discover extends Component {
   state = {
+    query: {
+      location: localStorage.getItem("zipcode"),
+      price: localStorage.getItem("price"),
+      categories: localStorage.getItem("cuisines")
+    },
     yelpId: "",
     name: "",
     image_url: "",
@@ -33,8 +38,8 @@ class Discover extends Component {
     this.loadNextRestaurant();
   };
 
-  loadNextRestaurant() {
-    API.getRestaurants()
+  loadNextRestaurant = () => {
+    API.getRestaurants(this.state.query)
       .then(res => {
         const { id, name, image_url, url, price, rating, location } = res.data[
           this.state.index
@@ -59,7 +64,7 @@ class Discover extends Component {
         
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleLike = () => {
     API.likeOrDislike({
@@ -100,11 +105,11 @@ class Discover extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <NavBar />
         <RestaurantCard
-          // style={{ marginTop: "400px" }}
           id={this.state.id}
           name={this.state.name}
           image={this.state.image_url}

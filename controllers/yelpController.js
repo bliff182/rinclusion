@@ -2,10 +2,9 @@ require("dotenv").config();
 const axios = require("axios");
 const db = require("../models");
 
-console.log(process.env.YELP_API_KEY);
-
-const BASEURL =
-  "https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065&limit=50";
+// const BASEURL =
+// "https://api.yelp.com/v3/businesses/search?term=restaurant&location=10065&limit=50";
+// "https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50";
 const config = {
   headers: {
     Authorization: `Bearer ${process.env.YELP_API_KEY}`
@@ -20,7 +19,14 @@ module.exports = {
   findAll: function(req, res) {
     const { query: params } = req;
     axios
-      .get(BASEURL, config)
+      // .get(BASEURL, config, { params })
+      // .get(BASEURL, config, params)
+      // .get(BASEURL, { params }, { config })
+      .get(
+        `https://api.yelp.com/v3/businesses/search?term=restaurant&limit=50&location=${params.location}&price=${params.price}&categories=${params.categories}`,
+        // { params },
+        config
+      )
       .then(results =>
         results.data.businesses.filter(
           result =>

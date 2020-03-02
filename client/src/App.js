@@ -82,7 +82,7 @@ class App extends Component {
               </Route>
               <Route exact path="/signup">
                 {this.state.authenticated === true ? (
-                  <Redirect to="/discover" />
+                  <Redirect to="/preferences" />
                 ) : (
                   <Signup />
                 )}
@@ -125,32 +125,6 @@ class App extends Component {
               {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
             </Switch>
           </Container>
-          {/* {this.state.user === true ? (
-            <Container>
-              <Route exact path="/" component={Discover} />
-              <Route exact path="/discover" component={Discover} />
-              <Route exact path="/account" component={Account} />
-              <Route exact path="/settings" component={Settings} />
-              <Route exact path="/viewed" component={Viewed} />
-              <Route exact path="/preferences" component={Preferences} />
-            </Container>
-          ) : (
-            <Container>
-              <Route exact path="/" component={Signup} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/login" component={LogIn} />
-            </Container>
-          )} */}
-          {/* <Route exact path="/" component={LogIn} />
-
-            <Route exact path="/Login" component={LogIn} />
-            <Route exact path="/Discover" component={Discover} />
-            <Route exact path="/Liked" component={Liked} />
-            <Route exact path="/Account" component={Account} />
-            <Route exact path="/Settings" component={Settings} />
-            <Route exact path="/Viewed" component={Viewed} />
-            <Route exact path="/Signup" component={Signup} />
-            <Route exact path="/Preferences" component={Preferences} /> */}
         </div>
       </Router>
     );
