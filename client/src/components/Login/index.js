@@ -25,8 +25,13 @@ function FormLogin(props) {
         style={{
           textAlign: "center",
           padding: "50px",
-          maxWidth: "100%",
-          marginTop: "30px"
+          maxWidth: "333px",
+          marginTop: "30px",
+          backgroundColor: "white",
+          margin: "auto",
+          border: "1px solid black",
+          borderRadius: "10px",
+          boxShadow: "5px 5px 5px black"
         }}
       >
         <Container>

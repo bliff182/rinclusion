@@ -20,12 +20,16 @@ function ChangeEmail(props) {
       <form
         className={classes.root}
         autoComplete="off"
-        style={
-          ({ textAlign: "center" },
-          { padding: "50px" },
-          { maxWidth: "100%" },
-          { marginTop: "30px" })
-        }
+        style={{
+          textAlign: "center",
+          // padding: "5px 10px",
+          maxWidth: "100%",
+          marginTop: "30px"
+          // backgroundColor: "white",
+          // border: "1px solid black",
+          // borderRadius: "10px",
+          // boxShadow: "3px 2px 5px black"
+        }}
       >
         <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
           <h6 style={{ float: "left" }}>Change Email:</h6>

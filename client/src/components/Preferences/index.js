@@ -25,7 +25,11 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(1),
     textAlign: "center",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    border: "1px solid black",
+    borderRadius: "10px",
+    boxShadow: "2px 2px 10px black"
+    // float: "left"
   }
 }));
 
@@ -41,7 +45,11 @@ export default function NestedGrid(props) {
             <img
               src={mexico}
               alt="mexican jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Mexican</p>
             <Checkbox
@@ -67,7 +75,11 @@ export default function NestedGrid(props) {
             <img
               src={indian}
               alt="indian jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Indian</p>
             <Checkbox value="indian" onChange={selectCuisine} />
@@ -89,7 +101,11 @@ export default function NestedGrid(props) {
             <img
               src={italian}
               alt="italian jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Italian</p>
             <Checkbox value="italian" onChange={selectCuisine} />
@@ -100,7 +116,11 @@ export default function NestedGrid(props) {
             <img
               src={latin}
               alt="latin jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Latin American</p>
             <Checkbox value="latin" onChange={selectCuisine} />
@@ -111,7 +131,11 @@ export default function NestedGrid(props) {
             <img
               src={chinese}
               alt="chinese jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Chinese</p>
             <Checkbox value="chinese" onChange={selectCuisine} />
@@ -122,7 +146,11 @@ export default function NestedGrid(props) {
             <img
               src={comfort}
               alt="comfort jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Comfort Food</p>
             <Checkbox value="comfortfood" onChange={selectCuisine} />
@@ -133,7 +161,11 @@ export default function NestedGrid(props) {
             <img
               src={breakfast}
               alt="breakfast jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Breakfast</p>
             <Checkbox value="breakfast_brunch" onChange={selectCuisine} />
@@ -144,7 +176,11 @@ export default function NestedGrid(props) {
             <img
               src={seafood}
               alt="seafood jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Seafood</p>
             <Checkbox value="seafood" onChange={selectCuisine} />
@@ -155,7 +191,11 @@ export default function NestedGrid(props) {
             <img
               src={vegan}
               alt="vegan jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Vegan</p>
             <Checkbox value="vegan" onChange={selectCuisine} />
@@ -166,7 +206,11 @@ export default function NestedGrid(props) {
             <img
               src={all}
               alt="a variety of foods jpeg"
-              style={{ height: "160px", width: "240px" }}
+              style={{
+                height: "160px",
+                width: "240px",
+                border: "1px solid black"
+              }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Anything goes!</p>
             <Checkbox value="all" onChange={selectCuisine} />
@@ -180,7 +224,10 @@ export default function NestedGrid(props) {
             border: "1px solid gray",
             borderRadius: "5px",
             margin: "40px auto 50px auto",
-            zIndex: "2"
+            zIndex: "2",
+            backgroundColor: "white",
+            padding: "10px 20px",
+            color: "black"
           }}
           onClick={handleFormSubmit}
         >
@@ -195,7 +242,9 @@ export default function NestedGrid(props) {
             marginLeft: "0px",
             marginBottom: "50px",
             marginTop: "40px",
-            marginRight: "0px"
+            marginRight: "0px",
+            backgroundColor: "white",
+            padding: "10px 20px"
           }}
           onClick={handleSkip}
         >

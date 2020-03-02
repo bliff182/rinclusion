@@ -57,12 +57,13 @@ class App extends Component {
             textAlign: "center",
             position: "absolute",
             top: "25%",
-            left: "50%"
+            left: "50%",
+            color: "white"
           }}
         >
           <h3>Loading...</h3>
           <br />
-          <Spinner animation="border" role="status">
+          <Spinner animation="border" role="status" style={{ color: "white" }}>
             <span className="sr-only">Loading...</span>
           </Spinner>
         </div>
