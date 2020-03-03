@@ -5,8 +5,6 @@ const yelpRoutes = require("./yelp");
 const userRoutes = require("./users");
 
 router.use("/restaurants", restaurantRoutes);
-
-// Yelp routes
 router.use("/yelp", yelpRoutes);
 router.use("/users", userRoutes);
 

@@ -15,11 +15,13 @@ export default {
   },
 
   getViewed: function() {
-    return axios.get("/api/restaurants", { params: { isLiked: true } || { isLiked: false } });
+    return axios.get("/api/restaurants", {
+      params: { isLiked: true } || { isLiked: false }
+    });
   },
   // Deletes the liked restaurant
   deleteLike: function(id) {
-    return axios.delete("/api/restaurants" + id);
+    return axios.delete(`/api/restaurants/${id}`);
   },
   likeOrDislike: function(restaurantData) {
     return axios.post("/api/restaurants", restaurantData);

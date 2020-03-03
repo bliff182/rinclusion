@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 import Alert from "../components/Alert";
 import PrevLiked from "../components/Liked";
 // import Left from "../components/Leftbar";
 import Container from "@material-ui/core/Container";
-import PrevDisliked from "../components/Disliked"
+import PrevDisliked from "../components/Disliked";
+import API from "../utils/API";
 
 class LikedRestaurants extends Component {
   state = {
     liked: [],
-    disliked: []
+    disliked: [],
+    error: ""
   };
 
   componentDidMount() {
     this.grabLikes();
-    this.gradDislikes();
-    console.log(this.state)
+    this.grabDislikes();
   }
 
   grabLikes() {
@@ -24,24 +24,25 @@ class LikedRestaurants extends Component {
         this.setState({
           liked: res.data
         });
-        console.log(res.data)
       })
-      
       .catch(err => console.log(err));
   }
 
-  
-  gradDislikes() {
+  grabDislikes() {
     API.getDislikes()
       .then(res => {
         this.setState({
           disliked: res.data
-        })
+        });
       })
-      .catch(err => console.log(err)); 
+      .catch(err => console.log(err));
   }
 
-  
+  deleteRestaurant = id => {
+    API.deleteLike(id)
+      .then(res => this.componentDidMount())
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -54,18 +55,21 @@ class LikedRestaurants extends Component {
             {this.state.error}
           </Alert>
           {/* <Left grabLikes={this.grabLikes} /> */}
-          <PrevLiked  
+          <PrevLiked
             style={{
-              float:"left",
-              width:"50px"
+              float: "left",
+              width: "50px"
             }}
-          liked={this.state.liked} />
-          <PrevDisliked   
+            liked={this.state.liked}
+          />
+          <PrevDisliked
             style={{
-              width:"50px",
-              float:"right"
+              width: "50px",
+              float: "right"
             }}
-          disliked={this.state.disliked} />
+            disliked={this.state.disliked}
+            deleteRestaurant={this.deleteRestaurant}
+          />
         </Container>
       </div>
     );
