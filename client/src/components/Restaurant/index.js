@@ -15,7 +15,10 @@ import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 500
+    maxWidth: 500,
+    border: "2px solid black",
+    borderRadius: "10px",
+    boxShadow: "2px 2px 10px black"
   },
   media: {
     height: 500
@@ -54,14 +57,18 @@ function RestaurantCard(props) {
               {props.name}
             </Typography>
           </a>
+          {/* <hr /> */}
           <Typography variant="body2" color="textSecondary" component="p">
             <h6>{props.location.address1}</h6>
             <h6>
               {props.location.city}, {props.location.state}{" "}
               {props.location.zip_code}
             </h6>
-            <p>Price: {props.price}</p>
-            <p>Type: {props.categories}</p>
+            <hr />
+            Price: {props.price}
+            {/* <hr /> */}
+            <br />
+            Cuisine Type: {props.categories}
           </Typography>
         </CardContent>
       </CardActionArea>
