@@ -66,7 +66,7 @@ export default function TransitionsModal() {
             <button style={{ borderRadius: "5px" }}>
               <a
                 style={{ textDecoration: "none", color: "inherit" }}
-                href="/Login"
+                // href="/Login"
                 onClick={logOut}
               >
                 Yes
