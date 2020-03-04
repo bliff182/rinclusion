@@ -9,11 +9,18 @@ export default {
   getLikes: function() {
     return axios.get("/api/restaurants", { params: { isLiked: true } });
   },
+  // Updates liked status to true
+  markLiked: function(id) {
+    return axios.put(`/api/restaurants/${id}`, { isLiked: true });
+  },
+  // Updates liked status to false
+  markDisliked: function(id) {
+    return axios.put(`/api/restaurants/${id}`, { isLiked: false });
+  },
   // Gets all disliked restaurants
   getDislikes: function() {
     return axios.get("/api/restaurants", { params: { isLiked: false } });
   },
-
   getViewed: function() {
     return axios.get("/api/restaurants", {
       params: { isLiked: true } || { isLiked: false }
@@ -23,6 +30,7 @@ export default {
   deleteLike: function(id) {
     return axios.delete(`/api/restaurants/${id}`);
   },
+  // Adds restaurants to db
   likeOrDislike: function(restaurantData) {
     return axios.post("/api/restaurants", restaurantData);
   }
