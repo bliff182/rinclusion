@@ -29,11 +29,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleModal(props) {
+function SimpleModal(props) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
+  const {
+    modalOn,
+    comments,
+    stars,
+    haveTried,
+    bookmark
+  } = props;
 
   const handleOpen = () => {
     setOpen(true);
@@ -48,8 +55,8 @@ export default function SimpleModal(props) {
       <Tooltip title="View Info">
             <IconButton aria-label="more" onClick={handleOpen} >
                 <MoreHorizIcon fontSize="small" />
-            </IconButton>
-        </Tooltip>
+            </IconButton> 
+         </Tooltip>
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
@@ -67,3 +74,5 @@ export default function SimpleModal(props) {
     </div>
   );
 }
+
+export default SimpleModal;
