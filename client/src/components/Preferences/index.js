@@ -35,7 +35,23 @@ const useStyles = makeStyles(theme => ({
 
 export default function NestedGrid(props) {
   const classes = useStyles();
-  const { selectCuisine, checked, handleFormSubmit, handleSkip } = props;
+  const {
+    selectCuisine,
+    handleFormSubmit,
+    handleSkip,
+    mexMessage,
+    burgerMessage,
+    indMessage,
+    pizzaMessage,
+    italMessage,
+    latinMessage,
+    chinMessage,
+    comfMessage,
+    breakMessage,
+    seaMessage,
+    vegMessage,
+    allMessage
+  } = props;
 
   function FormRow() {
     return (
@@ -52,11 +68,19 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Mexican</p>
-            <Checkbox
+            <Button
+              variant="contained"
+              color="secondary"
+              value="mexican"
+              onClick={() => selectCuisine("mexican")}
+            >
+              {mexMessage}
+            </Button>
+            {/* <Checkbox
               value="mexican"
               onChange={selectCuisine}
               checked={checked}
-            />
+            /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -67,7 +91,15 @@ export default function NestedGrid(props) {
               style={{ height: "160px", width: "240px" }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Burgers</p>
-            <Checkbox value="burgers" onChange={selectCuisine} />
+            {/* <Checkbox value="burgers" onChange={selectCuisine} /> */}
+            <Button
+              variant="contained"
+              color="secondary"
+              // value="burgers"
+              onClick={() => selectCuisine("burgers")}
+            >
+              {burgerMessage}
+            </Button>
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -82,7 +114,13 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Indian</p>
-            <Checkbox value="indian" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("indian")}
+            >
+              {indMessage}
+            </Button>
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -93,7 +131,14 @@ export default function NestedGrid(props) {
               style={{ height: "160px", width: "240px" }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Pizza</p>
-            <Checkbox value="pizza" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("pizza")}
+            >
+              {pizzaMessage}
+            </Button>
+            {/* <Checkbox value="pizza" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -108,7 +153,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Italian</p>
-            <Checkbox value="italian" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("italian")}
+            >
+              {italMessage}
+            </Button>
+            {/* <Checkbox value="italian" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -123,7 +175,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Latin American</p>
-            <Checkbox value="latin" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("latin")}
+            >
+              {latinMessage}
+            </Button>
+            {/* <Checkbox value="latin" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -138,7 +197,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Chinese</p>
-            <Checkbox value="chinese" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("chinese")}
+            >
+              {chinMessage}
+            </Button>
+            {/* <Checkbox value="chinese" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -153,7 +219,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Comfort Food</p>
-            <Checkbox value="comfortfood" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("comfortfood")}
+            >
+              {comfMessage}
+            </Button>
+            {/* <Checkbox value="comfortfood" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -168,7 +241,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Breakfast</p>
-            <Checkbox value="breakfast_brunch" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("breakfast_brunch")}
+            >
+              {breakMessage}
+            </Button>
+            {/* <Checkbox value="breakfast_brunch" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -183,7 +263,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Seafood</p>
-            <Checkbox value="seafood" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("seafood")}
+            >
+              {seaMessage}
+            </Button>
+            {/* <Checkbox value="seafood" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -198,7 +285,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Vegan</p>
-            <Checkbox value="vegan" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("vegan")}
+            >
+              {vegMessage}
+            </Button>
+            {/* <Checkbox value="vegan" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -213,7 +307,14 @@ export default function NestedGrid(props) {
               }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Anything goes!</p>
-            <Checkbox value="all" onChange={selectCuisine} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => selectCuisine("all")}
+            >
+              {allMessage}
+            </Button>
+            {/* <Checkbox value="all" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
 
