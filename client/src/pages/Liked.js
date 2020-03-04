@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Alert from "../components/Alert";
 import PrevLiked from "../components/Liked";
-// import Left from "../components/Leftbar";
 import Container from "@material-ui/core/Container";
 import PrevDisliked from "../components/Disliked";
 import API from "../utils/API";
@@ -61,6 +60,7 @@ class LikedRestaurants extends Component {
               width: "50px"
             }}
             liked={this.state.liked}
+            deleteRestaurant={this.deleteRestaurant}
           />
           <PrevDisliked
             style={{
