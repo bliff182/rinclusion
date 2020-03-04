@@ -53,7 +53,7 @@ function SimpleModal(props) {
   return (
     <div style={{ float:"left"}}>
       <Tooltip title="View Info">
-            <IconButton aria-label="more" onClick={handleOpen} >
+            <IconButton aria-label="more" onClick={modalOn} >
                 <MoreHorizIcon fontSize="small" />
             </IconButton> 
          </Tooltip>

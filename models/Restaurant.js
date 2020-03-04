@@ -11,6 +11,20 @@ const restaurantSchema = new Schema({
     type: String,
     required: true
   },
+  comments: {
+    type: String
+  },
+  stars: {
+    type: String
+  },
+  haveTried: {
+    type: Boolean,
+    default: false
+  },
+  bookmarked: {
+    type: Boolean,
+    default: false
+  },
   url: {
     type: String,
     required: true

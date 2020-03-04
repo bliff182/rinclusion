@@ -26,6 +26,9 @@ export default {
       params: { isLiked: true } || { isLiked: false }
     });
   },
+  updateRest: function(id) {
+    return axios.put(`/api/restaurants/${id}`)
+  },
   // Deletes the liked restaurant
   deleteLike: function(id) {
     return axios.delete(`/api/restaurants/${id}`);

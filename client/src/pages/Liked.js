@@ -5,27 +5,16 @@ import Container from "@material-ui/core/Container";
 import PrevDisliked from "../components/Disliked";
 import API from "../utils/API";
 import Modal from "../components/Modal"
-import IconButton from '@material-ui/core/IconButton';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import Tooltip from '@material-ui/core/Tooltip';
-// import Modal from '@material-ui/core/Modal';
-
-
-
-// import { makeStyles } from '@material-ui/core/styles';
-// import Modal from '@material-ui/core/Modal';
-
 
 
 class LikedRestaurants extends Component {
   state = {
     liked: [],
     disliked: [],
-    modalOn: false,
-    comments: "",
+    comments: "hello",
     stars: "",
     haveTried: false,
-    bookmark: false,
+    bookmarked: false,
     error: ""
   };
 
@@ -35,16 +24,33 @@ class LikedRestaurants extends Component {
       [name]: value
     });
   };
+
+  handleSave = event => {
+    // event.preventDefault();
+    console.log(this.state.comments)
+    event.preventDefault();
+      API.update({
+        comments: this.state.comments
+      })
+      .then(() => {
+        // alert( "Name updated.");
+        console.log(this.state.comments);
+        // this.setState({
+        //   name: "",
+        //   variant: "success",
+        //   visible: true,
+        //   heading: "Hooray!",
+        //   message: "Name updated!"
+        // });
+      })
+      .catch(err => console.log(err))
+  };
+
   componentDidMount() {
     this.grabLikes();
     this.grabDislikes();
   }
 
-  toggleModal = () => {
-    this.setState({
-      modalOn: !this.state.modalOn
-    });
-  };
 
   grabLikes() {
     API.getLikes()
@@ -90,7 +96,8 @@ class LikedRestaurants extends Component {
             }}
             liked={this.state.liked}
             deleteRestaurant={this.deleteRestaurant}
-            modalOn={this.state.modalOn}
+            bookmarked={this.state.bookmarked}
+
           />
           <PrevDisliked
             style={{
@@ -98,12 +105,16 @@ class LikedRestaurants extends Component {
               float: "right"
             }}
             disliked={this.state.disliked}
-            modalOn={this.state.modalOn}
             deleteRestaurant={this.deleteRestaurant}
+            bookmarked={this.state.bookmarked}
+
           />
           <Modal
-            onClose={this.toggleModal}
-            modalOn={this.state.modalOn}
+            comments={this.state.comments}
+            stars={this.state.stars}
+            haveTried={this.state.haveTried}
+            handleInputChange={this.handleInputChange}
+            handleSave={this.handleSave}
           />
         </Container>
       </div>
