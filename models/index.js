@@ -1,4 +1,4 @@
 module.exports = {
-  Restaurant: require("./restaurant"),
+  Restaurant: require("./Restaurant"),
   User: require("./User")
 };
