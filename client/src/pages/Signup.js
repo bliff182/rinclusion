@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import FormC from "../components/Form";
 import fire from "../config/Fire";
-// import Logo from "../components/Logo";
+import Logo from "../components/Logo";
 import Alert from "react-bootstrap/Alert";
 
 class Signup extends Component {
@@ -103,6 +103,7 @@ class Signup extends Component {
     }
     return (
       <div>
+        <Logo />
         <FormC
           email={this.state.email}
           name={this.state.name}
