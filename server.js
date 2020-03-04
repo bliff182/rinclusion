@@ -16,10 +16,14 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mealmatch", {
-  useCreateIndex: true,
-  useNewUrlParser: true
-});
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb://user1:password1@ds329058.mlab.com:29058/heroku_4rqc973t",
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  }
+);
 
 // Send every request to the React app
 // Define any API routes before this runs
