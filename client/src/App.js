@@ -72,7 +72,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 {this.state.authenticated === true ? (
-                  <Redirect to="/discover" />
+                  <Redirect to="/preferences" />
                 ) : (
                   <Signup />
                 )}
@@ -93,28 +93,28 @@ class App extends Component {
               </Route>
               <Route exact path="/settings">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Settings />
                 )}
               </Route>
               <Route exact path="/liked">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Viewed />
                 )}
               </Route>
               <Route exact path="/preferences">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Preferences />
                 )}
               </Route>
               <Route exact path="/discover">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Discover />
                 )}

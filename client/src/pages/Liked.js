@@ -4,42 +4,12 @@ import PrevLiked from "../components/Liked";
 import Container from "@material-ui/core/Container";
 import PrevDisliked from "../components/Disliked";
 import API from "../utils/API";
-import Modal from "../components/Modal";
 
 class LikedRestaurants extends Component {
   state = {
     liked: [],
     disliked: [],
-    comments: "hello",
-    stars: "",
-    haveTried: false,
-    bookmarked: false,
     error: ""
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleSave = event => {
-    console.log(this.state.comments);
-    event.preventDefault();
-    API.update({
-      comments: this.state.comments
-    })
-      .then(() => {
-        // this.setState({
-        //   name: "",
-        //   variant: "success",
-        //   visible: true,
-        //   heading: "Hooray!",
-        //   message: "Name updated!"
-        // });
-      })
-      .catch(err => console.log(err));
   };
 
   componentDidMount() {
@@ -67,9 +37,21 @@ class LikedRestaurants extends Component {
       .catch(err => console.log(err));
   }
 
+  markAsLiked = id => {
+    API.markLiked(id)
+      .then(() => this.componentDidMount())
+      .catch(err => console.log(err));
+  };
+
+  markAsDisliked = id => {
+    API.markDisliked(id)
+      .then(() => this.componentDidMount())
+      .catch(err => console.log(err));
+  };
+
   deleteRestaurant = id => {
     API.deleteLike(id)
-      .then(res => this.componentDidMount())
+      .then(() => this.componentDidMount())
       .catch(err => console.log(err));
   };
 
@@ -91,7 +73,7 @@ class LikedRestaurants extends Component {
             }}
             liked={this.state.liked}
             deleteRestaurant={this.deleteRestaurant}
-            bookmarked={this.state.bookmarked}
+            markAsDisliked={this.markAsDisliked}
           />
           <PrevDisliked
             style={{
@@ -100,14 +82,7 @@ class LikedRestaurants extends Component {
             }}
             disliked={this.state.disliked}
             deleteRestaurant={this.deleteRestaurant}
-            bookmarked={this.state.bookmarked}
-          />
-          <Modal
-            comments={this.state.comments}
-            stars={this.state.stars}
-            haveTried={this.state.haveTried}
-            handleInputChange={this.handleInputChange}
-            handleSave={this.handleSave}
+            markAsLiked={this.markAsLiked}
           />
         </Container>
       </div>

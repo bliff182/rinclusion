@@ -26,9 +26,6 @@ export default {
       params: { isLiked: true } || { isLiked: false }
     });
   },
-  updateRest: function(id) {
-    return axios.put(`/api/restaurants/${id}`);
-  },
   // Deletes the liked restaurant
   deleteLike: function(id) {
     return axios.delete(`/api/restaurants/${id}`);
@@ -36,8 +33,5 @@ export default {
   // Adds restaurants to db
   likeOrDislike: function(restaurantData) {
     return axios.post("/api/restaurants", restaurantData);
-  },
-  getOne: function(id) {
-    return axios.get(`/api/restaurants${id}`);
   }
 };
