@@ -18,7 +18,7 @@ Once you sign up with your email address, you will be directed to the Preference
 
 After you submit your preferences, you will then be shown restaurants matching your criteria, appearing one at a time. If you want to learn more about a specific place, you can click the restaurant name to be redirected to the restaurant's Yelp listing. If you like what you see, click the Like button and the restaurant will be saved to your list of Likes. Alternatively, if you're not interested, click the Dislike button.
 
-![Discover](/img/preferences.png)
+![Discover](/img/discover.png)
 
 ### Edit your Likes and Dislikes
 
