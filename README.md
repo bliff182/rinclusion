@@ -1,29 +1,39 @@
-# Create React Express App
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## About This Boilerplate
+# MealMatch
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+**Created by Mike Bither and Marc Dycus**
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## What is MealMatch?
 
-## Starting the app locally
+Are you getting tired of ordering food from the same old places time and time again? Look no further than MealMatch! MealMatch is a full-stack MERN application to help you discover and learn about nearby restaurants you may not have been aware of.
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+### Getting Started
 
-```
-npm install
-```
+Once you sign up with your email address, you will be directed to the Preferences page. Here, you must enter your zip code so we know where to look! Additionally, you can enter optional price preferences, and select from a number of cuisine options if you would like to narrow down your results. Once done, hit submit and start discovering!
 
-This should install node modules within the server and the client folder.
+![Preferences](/img/preferences.png)
 
-After both installations complete, run the following command in your terminal:
+### Discover New Restaurants
 
-```
-npm start
-```
+After you submit your preferences, you will then be shown restaurants matching your criteria, appearing one at a time. If you want to learn more about a specific place, you can click the restaurant name to be redirected to the restaurant's Yelp listing. If you like what you see, click the Like button and the restaurant will be saved to your list of Likes. Alternatively, if you're not interested, click the Dislike button.
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+![Discover](/img/preferences.png)
 
-## Deployment (Heroku)
+### Edit your Likes and Dislikes
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+All of your Likes and Dislikes will viewable on the Previously Viewed page. Here, you can edit each restaurant's Liked/Disliked status, or delete them entirely from your lists.
+
+### Tools used
+
+- React
+- Material-UI
+- React-Bootstrap
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- Axios
+- Firebase
+
+[Check out the deployed version here!](https://hidden-falls-38208.herokuapp.com/)
