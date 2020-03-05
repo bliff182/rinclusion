@@ -24,6 +24,8 @@ After you submit your preferences, you will then be shown restaurants matching y
 
 All of your Likes and Dislikes will viewable on the Previously Viewed page. Here, you can edit each restaurant's Liked/Disliked status, or delete them entirely from your lists.
 
+![Previously Viewed](/img/previous.png)
+
 ### Tools used
 
 - React

@@ -55,16 +55,23 @@ const PrevDisliked = props => {
                   <DeleteIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
-              <h6
-                style={{
-                  textAlign: "center",
-                  width: "100%",
-                  margin: "8px 0px"
-                }}
-                name={result.name}
+              <a
+                href={result.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "black" }}
               >
-                {result.name}
-              </h6>
+                <h6
+                  style={{
+                    textAlign: "center",
+                    width: "100%",
+                    margin: "8px 0px"
+                  }}
+                  name={result.name}
+                >
+                  {result.name}
+                </h6>
+              </a>
               <img
                 alt="disliked restaurants"
                 src={result.image_url}
@@ -73,7 +80,8 @@ const PrevDisliked = props => {
                   height: "60px",
                   width: "70px",
                   borderRadius: "3px",
-                  margin: "auto"
+                  margin: "auto",
+                  border: "1px solid black"
                 }}
               />
             </ListItem>
