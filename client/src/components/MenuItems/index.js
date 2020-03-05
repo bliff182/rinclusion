@@ -15,7 +15,7 @@ function MenuItems() {
       </MenuItem>
       <MenuItem>
         <a style={{ textDecoration: "none", color: "inherit" }} href="/Liked">
-          All Previous
+          Previously Viewed
         </a>
       </MenuItem>
       <MenuItem>
