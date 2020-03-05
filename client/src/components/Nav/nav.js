@@ -25,12 +25,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MenuAppBar() {
+function MenuAppBar(props) {
   const classes = useStyles();
   const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const { currentName } = props
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -62,6 +62,7 @@ export default function MenuAppBar() {
           >
             MealMatch
           </Typography>
+          
           {auth && (
             <div>
               <IconButton
@@ -72,6 +73,9 @@ export default function MenuAppBar() {
                 color="inherit"
               >
                 <AccountCircle />
+                <h5
+              style={{margin:"0"}}
+            > {currentName}</h5>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -97,3 +101,5 @@ export default function MenuAppBar() {
     </div>
   );
 }
+
+export default MenuAppBar;

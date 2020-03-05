@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
 
 function ChangeEmail(props) {
   const classes = useStyles();
-  const { email, handleInputChange, handleEmailChange } = props;
+  const { email, handleInputChange, handleEmailChange, currentEmail } = props;
+  // getCurrentInfo();
   return (
     <div style={{ textAlign: "center" }}>
       <form
@@ -26,7 +27,33 @@ function ChangeEmail(props) {
           marginTop: "30px"
         }}
       >
+        
         <Container style={{ marginTop: "50px", marginBottom: "100px" }}>
+          <div 
+          style={{
+            marginBottom:"30px"
+          }}
+          >
+        <h6
+            style={{
+              float: "left"
+            }}
+          >
+            Current Email:
+          </h6>
+          <Container
+            style={{
+              width: "300px",
+              textAlign: "center"
+              // margin:"0"
+            }}
+          >
+            <h4
+            >
+              {currentEmail}
+            </h4>
+          </Container>
+          </div>
           <h6 style={{ float: "left" }}>Change Email:</h6>
           <Container style={{ width: "300px", textAlign: "center" }}>
             <TextField

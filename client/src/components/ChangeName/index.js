@@ -14,7 +14,9 @@ const useStyles = makeStyles(theme => ({
 
 function ChangeName(props) {
   const classes = useStyles();
-  const { name, handleInputChange, handleNameChange } = props;
+  const { name, handleInputChange, handleNameChange, getCurrentName, currentName } = props;
+  // getCurrentName();
+  // console.log(currentName)
   return (
     <div style={{ textAlign: "center" }}>
       <form
@@ -33,6 +35,31 @@ function ChangeName(props) {
             marginBottom: "100px"
           }}
         >
+          <div 
+          style={{
+            marginBottom:"30px"
+          }}
+          >
+          <h6
+            style={{
+              float: "left"
+            }}
+          >
+            Current Display Name:
+          </h6>
+          <Container
+            style={{
+              width: "300px",
+              textAlign: "center"
+            }}
+          >
+            <h4
+            >
+              {currentName}
+            </h4>
+
+          </Container>
+          </div>
           <h6
             style={{
               float: "left"

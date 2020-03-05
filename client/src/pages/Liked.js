@@ -23,8 +23,11 @@ class LikedRestaurants extends Component {
         this.setState({
           liked: res.data
         });
+        console.log(this.state.liked)
       })
+
       .catch(err => console.log(err));
+
   }
 
   grabDislikes() {
@@ -65,7 +68,7 @@ class LikedRestaurants extends Component {
           >
             {this.state.error}
           </Alert>
-          {/* <Left grabLikes={this.grabLikes} /> */}
+
           <PrevLiked
             style={{
               float: "left",
@@ -84,6 +87,7 @@ class LikedRestaurants extends Component {
             deleteRestaurant={this.deleteRestaurant}
             markAsLiked={this.markAsLiked}
           />
+         
         </Container>
       </div>
     );

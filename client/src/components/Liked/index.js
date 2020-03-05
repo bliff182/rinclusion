@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 
+
 const PrevLiked = props => {
   const { liked, deleteRestaurant, markAsDisliked } = props;
   return (
