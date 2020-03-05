@@ -241,7 +241,6 @@ class Preferences extends Component {
   };
 
   render() {
-    console.table(this.state);
     return (
       <div>
         {this.state.redirect === true ? (

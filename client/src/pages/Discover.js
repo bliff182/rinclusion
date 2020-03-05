@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import RestaurantCard from "../components/Restaurant";
 import NavBar from "../components/Nav";
-// import Alert from "../components/Alert";
-// import Card from "../components/Card";
 
 class Discover extends Component {
   state = {
@@ -60,8 +58,6 @@ class Discover extends Component {
         });
         const formattedCategories = currentCategories.join(", ");
         this.setState({ categories: formattedCategories });
-        console.log(this.state)
-        
       })
       .catch(err => console.log(err));
   };
@@ -105,7 +101,6 @@ class Discover extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <NavBar />

@@ -1,17 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  Fab
-} from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
+import Fab from "@material-ui/core/Fab";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-// import "./styles.css";
 
 const useStyles = makeStyles({
   root: {

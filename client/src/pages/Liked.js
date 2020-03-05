@@ -4,8 +4,7 @@ import PrevLiked from "../components/Liked";
 import Container from "@material-ui/core/Container";
 import PrevDisliked from "../components/Disliked";
 import API from "../utils/API";
-import Modal from "../components/Modal"
-
+import Modal from "../components/Modal";
 
 class LikedRestaurants extends Component {
   state = {
@@ -26,15 +25,12 @@ class LikedRestaurants extends Component {
   };
 
   handleSave = event => {
-    // event.preventDefault();
-    console.log(this.state.comments)
+    console.log(this.state.comments);
     event.preventDefault();
-      API.update({
-        comments: this.state.comments
-      })
+    API.update({
+      comments: this.state.comments
+    })
       .then(() => {
-        // alert( "Name updated.");
-        console.log(this.state.comments);
         // this.setState({
         //   name: "",
         //   variant: "success",
@@ -43,14 +39,13 @@ class LikedRestaurants extends Component {
         //   message: "Name updated!"
         // });
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   };
 
   componentDidMount() {
     this.grabLikes();
     this.grabDislikes();
   }
-
 
   grabLikes() {
     API.getLikes()
@@ -97,7 +92,6 @@ class LikedRestaurants extends Component {
             liked={this.state.liked}
             deleteRestaurant={this.deleteRestaurant}
             bookmarked={this.state.bookmarked}
-
           />
           <PrevDisliked
             style={{
@@ -107,7 +101,6 @@ class LikedRestaurants extends Component {
             disliked={this.state.disliked}
             deleteRestaurant={this.deleteRestaurant}
             bookmarked={this.state.bookmarked}
-
           />
           <Modal
             comments={this.state.comments}

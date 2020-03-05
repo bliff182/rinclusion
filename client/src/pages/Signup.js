@@ -72,11 +72,7 @@ class Signup extends Component {
           console.log(errorCode);
           console.log(errorMessage);
           this.setState({
-            // name: "",
-            // email: "",
-            // password: "",
-            // confirmPass: "",
-            // redirect: true,
+            redirect: true,
             visible: true,
             message: errorMessage
           });
