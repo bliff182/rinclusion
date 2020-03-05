@@ -5,6 +5,7 @@ import ChangeName from "../components/ChangeName";
 import ChangePass from "../components/ChangePassword";
 import fire from "../config/Fire";
 import Alert from "react-bootstrap/Alert";
+import API from "../utils/API";
 
 class Settings extends Component {
   state = {
@@ -17,7 +18,9 @@ class Settings extends Component {
     variant: "",
     visible: false,
     heading: "",
-    message: ""
+    message: "",
+    currentEmail: "",
+    currentName: ""
   };
 
   handleInputChange = event => {
@@ -49,6 +52,7 @@ class Settings extends Component {
             heading: "Hooray!",
             message: "Name updated!"
           });
+          this.getCurrentInfo();
         })
         .catch(err => console.log(err));
     }
@@ -81,6 +85,7 @@ class Settings extends Component {
             heading: "Hooray!",
             message: "Email updated!"
           });
+          this.getCurrentInfo();
         })
         .catch(error => console.log(error));
     }
@@ -134,12 +139,24 @@ class Settings extends Component {
             variant: "success",
             visible: true,
             heading: "Hooray!",
-            message: "Password successfully changed!"
+            message: "Password successfully changed!",
           });
         })
         .catch(error => console.log(error));
     }
   };
+
+  componentWillMount() {
+    this.getCurrentInfo();
+  }
+
+  getCurrentInfo = () => {
+    this.setState({
+      currentEmail: this.state.user.email,
+      currentName: this.state.user.displayName
+    })
+    // console.log(this.state.user.displayName)
+  }
 
   toggleAlert = () => {
     this.setState({
@@ -164,12 +181,17 @@ class Settings extends Component {
           }}
         >
           <ChangeName
+            getCurrentName={this.getCurrentInfo}
+            currentName={this.state.currentName}
+            
             name={this.state.name}
             handleInputChange={this.handleInputChange}
             handleNameChange={this.handleNameChange}
           />
           <hr />
           <ChangeEmail
+            getCurrentEmail={this.getCurrentInfo}
+            currentEmail={this.state.currentEmail}
             email={this.state.email}
             handleInputChange={this.handleInputChange}
             handleEmailChange={this.handleEmailChange}

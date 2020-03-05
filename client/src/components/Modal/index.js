@@ -10,6 +10,7 @@ import StarIcon from "@material-ui/icons/Star";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 function getModalStyle() {
   const top = 50;
   const left = 50;
@@ -30,17 +31,20 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "5px"
   }
 }));
+
 function SimpleModal(props2) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [state, setState] = React.useState({
-    checkedA: true
+    checked: true,
   });
+
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
   };
+
   const {
     comments,
     id,
@@ -64,16 +68,18 @@ function SimpleModal(props2) {
     setOpen(false);
   };
   return (
-    <div style={{ float: "left" }}>
+    <div style={{ float:"left", width:"100%", zIndex:2}} id={props2.id}>
       <Tooltip title="View Info">
-        <IconButton aria-label="more" onClick={handleOpen}>
-          <MoreHorizIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
+            <IconButton aria-label="more" onClick={handleOpen} >
+                <MoreHorizIcon fontSize="small" />
+            </IconButton> 
+         </Tooltip>
+         {/* <h2>{name}</h2> */}
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={open}
+        handleOpen
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
