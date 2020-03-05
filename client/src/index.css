@@ -1,21 +1,7 @@
 body {
   background-image: url('https://tamirarestaurant.com/wp-content/uploads/2013/12/343299.jpg');
-  /* background-image: url('https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-6.jpg'); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: lightslategray;
   background-blend-mode: multiply;
-  /* background-blend-mode: soft-light; */
-  /* background-blend-mode: screen; */
-  /* margin: 0;
-  padding: 0;
-  font-family: sans-serif; */
 }
-
-/* body {
-  background-image: url(https://tamirarestaurant.com/wp-content/uploads/2013/12/343299.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: lightslategray;
-  background-blend-mode: soft-light;
-} */

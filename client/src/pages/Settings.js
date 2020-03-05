@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-// import SettingsForm from "../components/SettingsForm";
-// import API from "../utils";
 import SettingsBar from "../components/SettingsBar";
 import ChangeEmail from "../components/ChangeEmail";
 import ChangeName from "../components/ChangeName";
 import ChangePass from "../components/ChangePassword";
 import fire from "../config/Fire";
-// import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 
 class Settings extends Component {
@@ -22,10 +19,6 @@ class Settings extends Component {
     heading: "",
     message: ""
   };
-
-  componentDidMount() {
-    console.log(this.state.user);
-  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -49,8 +42,6 @@ class Settings extends Component {
           displayName: this.state.name
         })
         .then(() => {
-          // alert( "Name updated.");
-          // console.log(this.state.user);
           this.setState({
             name: "",
             variant: "success",
@@ -66,7 +57,6 @@ class Settings extends Component {
   handleEmailChange = event => {
     event.preventDefault();
     if (!this.state.email) {
-      // alert("Please fill out every field");
       this.setState({
         variant: "danger",
         visible: true,
@@ -74,9 +64,6 @@ class Settings extends Component {
         message: "You didn't type anything!"
       });
     } else if (!this.state.email.includes("@", ".")) {
-      // alert(
-      //   'Invalid email, please ensure the amil in in the format of "user@email.com"'
-      // );
       this.setState({
         variant: "danger",
         visible: true,
@@ -87,7 +74,6 @@ class Settings extends Component {
       this.state.user
         .updateEmail(this.state.email)
         .then(() => {
-          // alert("Email successfully changed.");
           this.setState({
             email: "",
             variant: "success",
@@ -95,7 +81,6 @@ class Settings extends Component {
             heading: "Hooray!",
             message: "Email updated!"
           });
-          console.log(this.state.user);
         })
         .catch(error => console.log(error));
     }
@@ -108,7 +93,6 @@ class Settings extends Component {
       !this.state.newPass ||
       !this.state.confirmPass
     ) {
-      // alert("Please fill out every field.");
       this.setState({
         variant: "danger",
         visible: true,
@@ -116,7 +100,6 @@ class Settings extends Component {
         message: "You didn't fill out every field!"
       });
     } else if (this.state.newPass.length < 6) {
-      // alert("Please choose a more secure password.");
       this.setState({
         variant: "danger",
         visible: true,
@@ -127,7 +110,6 @@ class Settings extends Component {
       !this.state.newPass.match(/\d+/g) ||
       !this.state.newPass.match(/[a-zA-Z]/)
     ) {
-      // alert("Please ensure the new password contains letters and numbers.");
       this.setState({
         variant: "danger",
         visible: true,
@@ -135,7 +117,6 @@ class Settings extends Component {
         message: "That password doesn't contain both letters and numbers!"
       });
     } else if (this.state.newPass !== this.state.confirmPass) {
-      // alert("Passwords do not match.");
       this.setState({
         variant: "danger",
         visible: true,
@@ -146,7 +127,6 @@ class Settings extends Component {
       this.state.user
         .updatePassword(this.state.newPass)
         .then(() => {
-          // alert("Password succesfully changed.");
           this.setState({
             currentPass: "",
             newPass: "",

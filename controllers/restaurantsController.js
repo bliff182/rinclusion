@@ -1,7 +1,6 @@
 const db = require("../models");
 
 module.exports = {
-  // add database code here
   findAll: function(req, res) {
     db.Restaurant.find(req.query)
       .sort({ date: -1 })

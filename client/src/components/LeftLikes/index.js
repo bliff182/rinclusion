@@ -25,7 +25,7 @@ class LikedRestaurants extends Component {
   render() {
     return (
       <div>
-        <Container >
+        <Container>
           <PrevViewed viewed={this.state.viewed} />
         </Container>
       </div>

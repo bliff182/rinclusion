@@ -44,7 +44,6 @@ function ChangeName(props) {
             style={{
               width: "300px",
               textAlign: "center"
-              // margin:"0"
             }}
           >
             <TextField

@@ -14,7 +14,6 @@ import latin from "../../img/latinAmerican.jpg";
 import pizza from "../../img/pizza.jpg";
 import seafood from "../../img/seafood.jpg";
 import vegan from "../../img/vegan.jpg";
-import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     border: "1px solid black",
     borderRadius: "10px",
     boxShadow: "2px 2px 10px black"
-    // float: "left"
   }
 }));
 
@@ -76,11 +74,6 @@ export default function NestedGrid(props) {
             >
               {mexMessage}
             </Button>
-            {/* <Checkbox
-              value="mexican"
-              onChange={selectCuisine}
-              checked={checked}
-            /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -91,11 +84,9 @@ export default function NestedGrid(props) {
               style={{ height: "160px", width: "240px" }}
             />
             <p style={{ margin: "0", fontSize: "20px" }}>Burgers</p>
-            {/* <Checkbox value="burgers" onChange={selectCuisine} /> */}
             <Button
               variant="contained"
               color="secondary"
-              // value="burgers"
               onClick={() => selectCuisine("burgers")}
             >
               {burgerMessage}
@@ -138,7 +129,6 @@ export default function NestedGrid(props) {
             >
               {pizzaMessage}
             </Button>
-            {/* <Checkbox value="pizza" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -160,7 +150,6 @@ export default function NestedGrid(props) {
             >
               {italMessage}
             </Button>
-            {/* <Checkbox value="italian" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -182,7 +171,6 @@ export default function NestedGrid(props) {
             >
               {latinMessage}
             </Button>
-            {/* <Checkbox value="latin" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -204,7 +192,6 @@ export default function NestedGrid(props) {
             >
               {chinMessage}
             </Button>
-            {/* <Checkbox value="chinese" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -226,7 +213,6 @@ export default function NestedGrid(props) {
             >
               {comfMessage}
             </Button>
-            {/* <Checkbox value="comfortfood" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -248,7 +234,6 @@ export default function NestedGrid(props) {
             >
               {breakMessage}
             </Button>
-            {/* <Checkbox value="breakfast_brunch" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -270,7 +255,6 @@ export default function NestedGrid(props) {
             >
               {seaMessage}
             </Button>
-            {/* <Checkbox value="seafood" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -292,7 +276,6 @@ export default function NestedGrid(props) {
             >
               {vegMessage}
             </Button>
-            {/* <Checkbox value="vegan" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -314,7 +297,6 @@ export default function NestedGrid(props) {
             >
               {allMessage}
             </Button>
-            {/* <Checkbox value="all" onChange={selectCuisine} /> */}
           </Paper>
         </Grid>
 
@@ -349,12 +331,7 @@ export default function NestedGrid(props) {
           }}
           onClick={handleSkip}
         >
-          <a
-            style={{ textDecoration: "none", color: "inherit" }}
-            // href="/Discover"
-          >
-            skip
-          </a>
+          <a style={{ textDecoration: "none", color: "inherit" }}>skip</a>
           <SkipNextIcon fontSize="small"></SkipNextIcon>
         </Button>
       </React.Fragment>

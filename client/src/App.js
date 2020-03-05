@@ -16,8 +16,7 @@ import Preferences from "./pages/Preferences";
 import fire from "./config/Fire";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
-// import SwipeableTemporaryDrawer from "./components/Drawer";
-// import Liked from "./pages/Liked";
+import NoMatch from "./pages/NoMatch";
 
 class App extends Component {
   state = {
@@ -27,7 +26,6 @@ class App extends Component {
 
   componentWillMount() {
     this.authListener();
-    console.table(this.state);
   }
 
   authListener = () => {
@@ -37,8 +35,6 @@ class App extends Component {
           authenticated: true,
           loading: false
         });
-        console.log("authed");
-        console.table(this.state);
       } else {
         this.setState({
           authenticated: false,
@@ -76,7 +72,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 {this.state.authenticated === true ? (
-                  <Redirect to="/discover" />
+                  <Redirect to="/preferences" />
                 ) : (
                   <Signup />
                 )}
@@ -97,33 +93,33 @@ class App extends Component {
               </Route>
               <Route exact path="/settings">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Settings />
                 )}
               </Route>
               <Route exact path="/liked">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Viewed />
                 )}
               </Route>
               <Route exact path="/preferences">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Preferences />
                 )}
               </Route>
               <Route exact path="/discover">
                 {this.state.authenticated === false ? (
-                  <Redirect to="/signup" />
+                  <Redirect to="/" />
                 ) : (
                   <Discover />
                 )}
               </Route>
-              {/* <SwipeableTemporaryDrawer></SwipeableTemporaryDrawer> */}
+              <Route path="*" component={NoMatch} />
             </Switch>
           </Container>
         </div>

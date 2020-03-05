@@ -4,13 +4,14 @@ import ListItem from "@material-ui/core/ListItem";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Modal from "../Modal";
+// import Modal from "../Modal";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 
 const PrevDisliked = props => {
-  const { disliked, deleteRestaurant } = props;
+  const { disliked, deleteRestaurant, markAsLiked } = props;
   return (
-    <div style={{ float: "right", width: "48%"}}>
-      <h3 style={{ textAlign: "center", marginTop:"10px", backgroundColor:"rgba(225, 225, 225, 0.2)", borderRadius:"5px" }}>Disliked Restaurants:</h3>
+    <div style={{ float: "right", width: "50%" }}>
+      <h3 style={{ textAlign: "center" }}>Disliked Restaurants:</h3>
       <List
         className="list-group search-results"
         style={{ width: "100%", textAlign: "center" }}
@@ -34,6 +35,16 @@ const PrevDisliked = props => {
               }}
             >
               {/* <Modal /> */}
+              <Tooltip title="Move to likes">
+                <IconButton
+                  aria-label="move"
+                  style={{ float: "left" }}
+                  id={result._id}
+                  onClick={() => markAsLiked(result._id)}
+                >
+                  <ThumbUpAltIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
               <Tooltip title="Delete from list">
                 <IconButton
                   aria-label="delete"

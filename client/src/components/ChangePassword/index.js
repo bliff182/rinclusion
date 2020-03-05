@@ -28,10 +28,7 @@ function ChangePass(props) {
         className={classes.root}
         autoComplete="off"
         style={
-          ({ textAlign: "center" },
-          { padding: "50px" },
-          //   { maxWidth: "100%" },
-          { marginTop: "30px" })
+          ({ textAlign: "center" }, { padding: "50px" }, { marginTop: "30px" })
         }
       >
         <Container
@@ -51,11 +48,9 @@ function ChangePass(props) {
             style={{
               width: "300px",
               textAlign: "center"
-              // margin:"0"
             }}
           >
             <TextField
-              // style={{marginRight:"30px" }}
               id="standard-basic"
               variant="standard"
               value={currentPass}
@@ -65,7 +60,6 @@ function ChangePass(props) {
               label="Current Password"
             />
             <TextField
-              // style={{marginRight:"30px" }}
               id="standard-basic"
               variant="standard"
               value={newPass}
@@ -76,7 +70,6 @@ function ChangePass(props) {
             />
 
             <TextField
-              // style={{marginRight:"30px", }}
               id="standard-basic"
               variant="standard"
               value={confirmPass}
