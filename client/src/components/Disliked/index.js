@@ -10,8 +10,8 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 const PrevDisliked = props => {
   const { disliked, deleteRestaurant, markAsLiked } = props;
   return (
-    <div style={{ float: "right", width: "50%" }}>
-      <h3 style={{ textAlign: "center" }}>Disliked Restaurants:</h3>
+    <div style={{ float: "right", width: "48%" }}>
+      <h3 style={{ textAlign: "center",backgroundColor:"rgba(225, 225, 225, 0.5)", borderRadius:"5px", padding:"3px" }}>Disliked Restaurants:</h3>
       <List
         className="list-group search-results"
         style={{ width: "100%", textAlign: "center" }}
@@ -22,16 +22,16 @@ const PrevDisliked = props => {
               key={result._id}
               className="list-group-item"
               style={{
-                border: " 1px solid gray",
+                // border: " 1px solid gray",
                 borderRadius: "5px",
-                margin: "10px",
+                margin: "4px",
                 height: "110px",
                 maxWidth: "300px",
-                boxShadow: "0px 1px 3px gray",
+                boxShadow: "0px 1px 8px black",
                 display: "inline-block",
                 padding: "0px",
                 textAlign: "center",
-                backgroundColor: "rgb(253, 225, 225)"
+                backgroundColor: "rgba(253, 225,  225, 0.8)"
               }}
             >
               {/* <Modal /> */}
