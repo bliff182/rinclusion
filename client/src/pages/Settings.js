@@ -155,9 +155,12 @@ class Settings extends Component {
           style={{
             backgroundColor: "white",
             margin: "auto",
+            width: "60%",
             border: "1px solid black",
             borderRadius: "10px",
-            boxShadow: "3px 2px 5px black"
+            boxShadow: "0px 2px 8px black",
+            backgroundColor: "rgba(255, 255, 255, 0.95)"
+
           }}
         >
           <ChangeName

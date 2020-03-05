@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     border: "1px solid black",
     borderRadius: "10px",
+    margin: "auto",
     boxShadow: "2px 2px 10px black"
   }
 }));

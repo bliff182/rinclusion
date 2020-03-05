@@ -6,10 +6,12 @@ import LeftLikes from "../LeftLikes";
 
 const useStyles = makeStyles({
   list: {
-    width: 250
+    width: 250,
+    
   },
   fullList: {
-    width: "auto"
+    width: "auto",
+    backgroundColor: "rgba(225, 225, 225, 0.8)"
   }
 });
 
@@ -36,6 +38,7 @@ function LeftBar() {
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
+      
     ></div>
   );
 
@@ -43,12 +46,13 @@ function LeftBar() {
     <div>
       <MenuIcon onClick={toggleDrawer("left", true)}></MenuIcon>
       <SwipeableDrawer
+       
         open={state.left}
         onClose={toggleDrawer("left", false)}
         onOpen={toggleDrawer("left", true)}
       >
         {sideList("left")}
-        <LeftLikes />
+        <LeftLikes style={{backgroundColor: "rgba(225, 225, 225, 0.8)"}} />
       </SwipeableDrawer>
     </div>
   );

@@ -10,8 +10,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 const PrevLiked = props => {
   const { liked, deleteRestaurant, markAsDisliked } = props;
   return (
-    <div style={{ float: "left", width: "50%" }}>
-      <h3 style={{ textAlign: "center" }}>Liked Restaurants:</h3>
+    <div style={{ float: "left", width: "48%" }}>
+      <h3 style={{ textAlign: "center", backgroundColor:"rgba(225, 225, 225, 0.5)", borderRadius:"5px", padding:"3px" }}>Liked Restaurants:</h3>
       <List
         className="list-group search-results"
         style={{ width: "100%", textAlign: "center" }}
@@ -22,16 +22,16 @@ const PrevLiked = props => {
               key={result._id}
               className="list-group-item"
               style={{
-                border: " 1px solid gray",
+                // border: " 1px solid black",
                 borderRadius: "5px",
-                margin: "10px",
+                margin: "4px",
                 height: "110px",
                 maxWidth: "300px",
-                boxShadow: "1px 1px 3px gray",
+                boxShadow: "0px 1px 8px black",
                 display: "inline-block",
                 padding: "0px",
                 textAlign: "center",
-                backgroundColor: "rgb(225, 253, 225)"
+                backgroundColor: "rgba(225, 253, 225, 0.8)"
               }}
             >
               {/* <Modal dataId={props._id} /> */}

@@ -13,9 +13,10 @@ import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
-    border: "2px solid black",
+    border: "1px solid black",
     borderRadius: "10px",
-    boxShadow: "2px 2px 10px black"
+    boxShadow: "0px 2px 10px black",
+    backgroundColor: "rgba(255, 255, 255, 0.7)"
   },
   media: {
     height: 500
