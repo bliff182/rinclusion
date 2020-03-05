@@ -17,6 +17,7 @@ import fire from "./config/Fire";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 import NoMatch from "./pages/NoMatch";
+import Logo from "./components/Logo";
 
 class App extends Component {
   state = {
@@ -44,7 +45,6 @@ class App extends Component {
     });
   };
 
-
   render() {
     if (this.state.loading) {
       return (
@@ -68,7 +68,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar />
+          {this.state.authenticated === true ? <NavBar /> : <Logo />}
           <Container style={{ marginTop: "100px" }}>
             <Switch>
               <Route exact path="/">

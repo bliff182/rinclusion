@@ -10,7 +10,7 @@ function MenuItems() {
           style={{ textDecoration: "none", color: "inherit" }}
           href="/discover"
         >
-          Home
+          Discover!
         </a>
       </MenuItem>
       <MenuItem>

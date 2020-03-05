@@ -66,6 +66,12 @@ class Signup extends Component {
       fire
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          const user = fire.auth().currentUser;
+          user.updateProfile({
+            displayName: this.state.name
+          });
+        })
         .catch(error => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -77,13 +83,12 @@ class Signup extends Component {
             message: errorMessage
           });
         });
-
-      this.setState({
-        name: "",
-        email: "",
-        password: "",
-        confirmPass: ""
-      });
+      // this.setState({
+      //   name: "",
+      //   email: "",
+      //   password: "",
+      //   confirmPass: ""
+      // });
     }
   };
 

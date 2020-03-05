@@ -139,7 +139,7 @@ class Settings extends Component {
             variant: "success",
             visible: true,
             heading: "Hooray!",
-            message: "Password successfully changed!",
+            message: "Password successfully changed!"
           });
         })
         .catch(error => console.log(error));
@@ -154,9 +154,9 @@ class Settings extends Component {
     this.setState({
       currentEmail: this.state.user.email,
       currentName: this.state.user.displayName
-    })
-    // console.log(this.state.user.displayName)
-  }
+    });
+    console.log(this.state.user.displayName);
+  };
 
   toggleAlert = () => {
     this.setState({
@@ -177,13 +177,11 @@ class Settings extends Component {
             borderRadius: "10px",
             boxShadow: "0px 2px 8px black",
             backgroundColor: "rgba(255, 255, 255, 0.95)"
-
           }}
         >
           <ChangeName
             getCurrentName={this.getCurrentInfo}
             currentName={this.state.currentName}
-            
             name={this.state.name}
             handleInputChange={this.handleInputChange}
             handleNameChange={this.handleNameChange}

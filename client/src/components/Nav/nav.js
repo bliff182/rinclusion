@@ -1,12 +1,12 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Menu from '@material-ui/core/Menu';
-import MenuItems from '../MenuItems';
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Menu from "@material-ui/core/Menu";
+import MenuItems from "../MenuItems";
 import Leftbar from "../Leftbar";
 // import LeftLikes from "../LeftLikes";
 
@@ -30,7 +30,7 @@ function MenuAppBar(props) {
   const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const { currentName } = props
+  const { currentName } = props;
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -62,7 +62,7 @@ function MenuAppBar(props) {
           >
             MealMatch
           </Typography>
-          
+
           {auth && (
             <div>
               <IconButton
@@ -73,9 +73,7 @@ function MenuAppBar(props) {
                 color="inherit"
               >
                 <AccountCircle />
-                <h5
-              style={{margin:"0"}}
-            > {currentName}</h5>
+                <h5 style={{ margin: "0" }}> {currentName}</h5>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -92,7 +90,7 @@ function MenuAppBar(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItems></MenuItems>
+                <MenuItems />
               </Menu>
             </div>
           )}
