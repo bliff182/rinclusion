@@ -3,7 +3,6 @@ import MenuAppBar from "./nav.js";
 import fire from "../../config/Fire";
 import { MenuItem } from "@material-ui/core";
 
-
 class NavBar extends Component {
   state = {
     user: fire.auth().currentUser,
@@ -24,19 +23,19 @@ class NavBar extends Component {
   getCurrentInfo = () => {
     this.setState({
       currentName: this.state.user.displayName
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div>
-        <MenuAppBar 
+        <MenuAppBar
           currentName={this.state.user.displayName}
           getCurrentName={this.getCurrentInfo}
           handleInputChange={this.handleInputChange}
         />
       </div>
-    )
+    );
   }
 }
 
